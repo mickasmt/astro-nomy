@@ -1,12 +1,10 @@
 ---
-import Layout from '@/layouts/BlogPost.astro';
+import MainLayout from '@/layouts/main-layout.astro';
 ---
 
-<Layout
+<MainLayout
 	title="About Me"
 	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
 >
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -59,4 +57,4 @@ import Layout from '@/layouts/BlogPost.astro';
 		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
 		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
 	</p>
-</Layout>
+</MainLayout>

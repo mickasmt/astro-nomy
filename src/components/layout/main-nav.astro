@@ -1,0 +1,32 @@
+---
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import type { MainNavItem } from "@/types";
+
+type Props = {
+  items: MainNavItem[];
+};
+const { items } = Astro.props;
+const { pathname } = Astro.url;
+---
+
+<h2 class="text-xl font-heading"><a href="/">{siteConfig.name}</a></h2>
+
+{
+  items?.length ? (
+    <nav class="hidden gap-6 md:flex">
+      {items?.map((item) => (
+        <a
+          href={item.disabled ? "#" : item.href}
+          class={cn(
+            "flex items-center font-medium transition-colors hover:text-foreground/80",
+            item.href == pathname ? "text-foreground" : "text-foreground/60",
+            item.disabled && "cursor-not-allowed opacity-80"
+          )}
+        >
+          {item.title}
+        </a>
+      ))}
+    </nav>
+  ) : null
+}

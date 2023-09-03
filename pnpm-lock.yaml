@@ -32,6 +32,9 @@ dependencies:
   astro:
     specifier: ^3.0.5
     version: 3.0.5
+  balance-text:
+    specifier: ^3.3.1
+    version: 3.3.1
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -1282,6 +1285,10 @@ packages:
 
   /bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
+    dev: false
+
+  /balance-text@3.3.1:
+    resolution: {integrity: sha512-tpnHvo1w0rJ5rbu+jZKf7NLKKg6XZ6eAwREP/9jEDJ+ZTBi6jQFqn/UGARL3/oqD8SgQbyTwBXBjhKDdTgoPRw==}
     dev: false
 
   /balanced-match@1.0.2:

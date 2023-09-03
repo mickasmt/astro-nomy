@@ -1,48 +1,43 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import { ViewTransitions } from 'astro:transitions';
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import MainLayout from "./main-layout.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<ViewTransitions />
-	</head>
-
-	<body>
-		<Header />
-		<main class="f-container py-10">
-			<article>
-				<div class="hero-image">
-					<img width={1020} height={510} src={heroImage} alt="" transition:name={"img-"+title} />
-				</div>
-				<div class="prose max-w-none">
-					<div class="title">
-						<div class="date" transition:name={"date-"+title}>
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1 transition:name={"title-"+title}>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+<MainLayout>
+  <div class="mx-auto max-w-screen-md">
+    <article class="prose max-w-none">
+      <div class="hero-image">
+        <img
+          width={1020}
+          height={510}
+          src={heroImage}
+          alt=""
+          transition:name={"img-" + title}
+        />
+      </div>
+      <div class="prose max-w-none">
+        <div class="title">
+          <div class="date" transition:name={"date-" + title}>
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+          </div>
+          <h1 transition:name={"title-" + title}>{title}</h1>
+					<p>{description}</p>
+          <hr />
+        </div>
+        <slot />
+      </div>
+    </article>
+  </div>
+</MainLayout>

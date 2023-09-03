@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'CalSans Semibold';
+  src: url('/fonts/calsans-semibold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -76,6 +84,10 @@
   }
 
   .f-container {
-    @apply w-full mx-auto px-4 max-w-screen-md;
+    @apply w-full mx-auto px-6 max-w-screen-xl;
+  }
+
+  .balance-text {
+    text-wrap: balance;
   }
 }
