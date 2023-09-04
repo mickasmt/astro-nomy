@@ -1,4 +1,4 @@
-const { fontFamily } = require("tailwindcss/defaultTheme")
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,6 +15,9 @@ module.exports = {
     extend: {
       fontFamily: {
         heading: ["CalSans Semibold", ...fontFamily.sans],
+      },
+      height: {
+        "18": "4.5rem",
       },
       colors: {
         border: "hsl(var(--border))",

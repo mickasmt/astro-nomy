@@ -1,11 +1,15 @@
 ---
+import { formatDate } from "@/lib/utils";
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
 import MainLayout from "./main-layout.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = {
+  post: CollectionEntry<"blog">["data"];
+  slug: string;
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const slug  = Astro.props.slug;
+const { title, description, pubDate, updatedDate, coverImage } = Astro.props.post;
 ---
 
 <MainLayout>
@@ -15,25 +19,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         <img
           width={1020}
           height={510}
-          src={heroImage}
+          src={coverImage}
           alt=""
-          transition:name={"img-" + title}
+          transition:name={"img-" + slug}
         />
       </div>
       <div class="prose max-w-none">
         <div class="title">
-          <div class="date" transition:name={"date-" + title}>
-            <FormattedDate date={pubDate} />
+          <div class="date" transition:name={"date-" + slug}>
+            {formatDate(pubDate)}
             {
               updatedDate && (
                 <div class="last-updated-on">
-                  Last updated on <FormattedDate date={updatedDate} />
+                  Last updated on {formatDate(updatedDate)}
                 </div>
               )
             }
           </div>
-          <h1 transition:name={"title-" + title}>{title}</h1>
-					<p>{description}</p>
+          <h1 transition:name={"title-" + slug}>{title}</h1>
+          <p>{description}</p>
           <hr />
         </div>
         <slot />

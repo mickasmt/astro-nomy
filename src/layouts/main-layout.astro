@@ -1,7 +1,7 @@
 ---
 import BaseHead from "@/components/layout/base-head.astro";
 import Footer from "@/components/layout/footer.astro";
-import MainNav from "@/components/layout/main-nav.astro";
+import Header from "@/components/layout/header.astro";
 import TailwindIndicator from "@/components/tailwind-indicator.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { marketingConfig } from "@/config/marketing";
@@ -16,30 +16,24 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body class="min-h-screen bg-background font-sans antialiased">
-    <header class="f-container h-20 z-50 sticky top-0 bg-background">
-      <nav class="flex items-center justify-between py-6">
-        <div class="flex items-start gap-6 md:gap-10">
-          <MainNav items={marketingConfig.mainNav} />
-        </div>
-
-        <nav>
-          <a
-            href="/login"
-            class={cn(
-              buttonVariants({ variant: "secondary", size: "sm" }),
-              "px-4"
-            )}
-          >
-            Login
-          </a>
-        </nav>
-      </nav>
-    </header>
+    <Header items={marketingConfig.mainNav}>
+      <div>
+        <a
+          href="/login"
+          class={cn(
+            buttonVariants({ variant: "secondary", size: "sm" }),
+            "px-4"
+          )}
+        >
+          Login
+        </a>
+      </div>
+    </Header>
 
     <main>
       <slot />
     </main>
-    
+
     <Footer />
     <TailwindIndicator />
   </body>

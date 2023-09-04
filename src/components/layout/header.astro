@@ -1,27 +1,17 @@
 ---
-import { marketingConfig } from "@/config/marketing";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import MainNav from "./main-nav.astro";
+
+const { items } = Astro.props;
 ---
 
-<header class="f-container h-20 z-50 sticky top-0 bg-background">
-  <nav class="flex items-center justify-between py-6">
-
+<header
+  class="f-container flex items-center h-18 z-50 sticky top-0 bg-background"
+>
+  <nav class="flex items-center justify-between w-full">
     <div class="flex items-start gap-6 md:gap-10">
-      <MainNav items={marketingConfig.mainNav} />
+      <MainNav items={items} />
     </div>
 
-    <nav>
-      <a
-        href="/login"
-        class={cn(
-          buttonVariants({ variant: "secondary", size: "sm" }),
-          "px-4"
-        )}
-      >
-        Login
-      </a>
-    </nav>
+    <slot />
   </nav>
 </header>
