@@ -84,7 +84,7 @@
   }
 
   .f-container {
-    @apply w-full mx-auto px-6 max-w-screen-xl;
+    @apply w-full mx-auto px-4 max-w-screen-xl;
   }
 
   .balance-text {

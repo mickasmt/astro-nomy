@@ -8,8 +8,22 @@ const posts = await getPosts();
 
 <MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
   <section class="f-container py-12">
+    <div class="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
+      <div class="flex-1 space-y-4">
+        <h1 class="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
+          Blog
+        </h1>
+        <p class="text-lg lg:text-xl text-muted-foreground">
+          A blog built using Content Collection. Posts are written in Markdown and MDX.
+        </p>
+      </div>
+    </div>
+    <hr class="my-8" />
+
+
+
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 md:gap-y-16 lg:gap-x-8"
     >
       {posts.map((post) => <BlogCard {...post} />)}
     </div>

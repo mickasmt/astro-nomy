@@ -27,7 +27,7 @@ const post = Astro.props;
         {post.data.category}
       </Badge>
     </a>
-    <span class="date" transition:name={"date-" + post.slug}>
+    <span class="font-medium text-muted-foreground" transition:name={"date-" + post.slug}>
       {formatDate(post.data.pubDate)}
     </span>
   </div>
@@ -35,7 +35,7 @@ const post = Astro.props;
   <div>
     <a href={`/blog/${post.slug}/`} class="group-hover:underline">
       <h2
-        class="font-heading text-2xl leading-snug line-clamp-3"
+        class="font-heading text-xl md:text-2xl leading-snug line-clamp-3"
         transition:name={"title-" + post.slug}
       >
         {post.data.title} - Lorem ipsum dolor sit amet consectetur adipisicing

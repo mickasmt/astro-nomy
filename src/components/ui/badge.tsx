@@ -18,8 +18,9 @@ const badgeVariants = cva(
       },
       radius: {
         default: "rounded-none",
-        md: "rounded-md",
         sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
         full: "rounded-full",
       }
     },
