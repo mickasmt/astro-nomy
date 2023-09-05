@@ -1,0 +1,42 @@
+---
+import BlogCard from "@/components/cards/blog-card.astro";
+import { buttonVariants } from "@/components/ui/button";
+import MainLayout from "@/layouts/main-layout.astro";
+import { getPostsByCategory } from "@/lib/fetchers";
+import { cn } from "@/lib/utils";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { category: post.data.category },
+  }));
+}
+
+const { category } = Astro.params;
+
+if (!category) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+
+const posts = await getPostsByCategory(category);
+---
+
+<MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
+  <section class="f-container py-10">
+    <h1 class="inline-block font-heading text-4xl">
+      Posts by <span class="capitalize">{category}</span> Category
+    </h1>
+
+    <hr class="my-8" />
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 md:gap-y-16 lg:gap-x-8"
+    >
+      {posts.map((post) => <BlogCard {...post} />)}
+    </div>
+  </section>
+</MainLayout>

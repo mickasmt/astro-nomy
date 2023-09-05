@@ -8,22 +8,21 @@ type Props = {
   slug: string;
 };
 
-const slug  = Astro.props.slug;
+const slug = Astro.props.slug;
 const { title, description, pubDate, updatedDate, coverImage } = Astro.props.post;
 ---
 
-<MainLayout>
-  <div class="mx-auto max-w-screen-md">
+<MainLayout title={title} description={description}>
+  <div class="mx-auto max-w-screen-md py-10">
     <article class="prose max-w-none">
-      <div class="hero-image">
-        <img
-          width={1020}
-          height={510}
-          src={coverImage}
-          alt=""
-          transition:name={"img-" + slug}
-        />
-      </div>
+      <img
+        class="rounded-xl overflow-hidden"
+        width={1020}
+        height={510}
+        src={coverImage}
+        alt=""
+        transition:name={"img-" + slug}
+      />
       <div class="prose max-w-none">
         <div class="title">
           <div class="date" transition:name={"date-" + slug}>
@@ -36,7 +35,9 @@ const { title, description, pubDate, updatedDate, coverImage } = Astro.props.pos
               )
             }
           </div>
-          <h1 transition:name={"title-" + slug}>{title}</h1>
+          <h1 class="font-heading text-4xl" transition:name={"title-" + slug}>
+            {title}
+          </h1>
           <p>{description}</p>
           <hr />
         </div>

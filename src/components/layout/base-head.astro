@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 import { ViewTransitions } from "astro:transitions";
@@ -13,10 +11,15 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
+const {
+  title,
+  description = siteConfig.description,
+  image = "/blog-placeholder-1.jpg",
+} = Astro.props;
 
-const headTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
-const headDesc = description ? description : siteConfig.description;
+const headTitle = title ? `${title} | ${siteConfig.name}` : title;
+
+// console.log(headTitle);
 ---
 
 <!-- Global Metadata -->
@@ -40,7 +43,7 @@ const headDesc = description ? description : siteConfig.description;
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={headTitle} />
-<meta name="description" content={headDesc} />
+<meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
