@@ -1,4 +1,5 @@
 ---
+import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "./main-layout.astro";
@@ -9,40 +10,49 @@ type Props = {
 };
 
 const slug = Astro.props.slug;
-const { title, description, pubDate, updatedDate, coverImage } = Astro.props.post;
+const { title, description, pubDate, updatedDate, coverImage, category } =
+  Astro.props.post;
 ---
 
 <MainLayout title={title} description={description}>
   <div class="mx-auto max-w-screen-md py-10">
     <article class="prose max-w-none">
+      <a href={`/blog/category/${category}`}>
+        <Badge
+          radius="md"
+          className="capitalize"
+          transition:name={"category-" + slug}
+        >
+          {category}
+        </Badge>
+      </a>
       <img
-        class="rounded-xl overflow-hidden"
+        class="rounded-xl overflow-hidden my-6"
         width={1020}
         height={510}
         src={coverImage}
         alt=""
         transition:name={"img-" + slug}
       />
-      <div class="prose max-w-none">
-        <div class="title">
-          <div class="date" transition:name={"date-" + slug}>
-            {formatDate(pubDate)}
-            {
-              updatedDate && (
-                <div class="last-updated-on">
-                  Last updated on {formatDate(updatedDate)}
-                </div>
-              )
-            }
-          </div>
-          <h1 class="font-heading text-4xl" transition:name={"title-" + slug}>
-            {title}
-          </h1>
-          <p>{description}</p>
-          <hr />
-        </div>
-        <slot />
+      <div class="flex items-center justify-between">
+        <span
+          class="font-medium text-muted-foreground"
+          transition:name={"date-" + slug}
+        >
+          {formatDate(pubDate)}
+          {
+            updatedDate && (
+              <span>- Last updated on {formatDate(updatedDate)}</span>
+            )
+          }
+        </span>
       </div>
+      <h1 class="font-heading text-4xl my-4" transition:name={"title-" + slug}>
+        {title}
+      </h1>
+      <p>{description}</p>
+      <hr class="my-6" />
+      <slot />
     </article>
   </div>
 </MainLayout>

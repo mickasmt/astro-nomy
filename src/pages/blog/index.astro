@@ -1,4 +1,5 @@
 ---
+import BlogHeader from "@/components/blog-header.astro";
 import BlogCard from "@/components/cards/blog-card.astro";
 import { buttonVariants } from "@/components/ui/button";
 import MainLayout from "@/layouts/main-layout.astro";
@@ -13,31 +14,7 @@ const categories = [
 
 <MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
   <section class="f-container py-10">
-    <h1 class="inline-block font-heading text-4xl">
-      Blog
-    </h1>
-
-    <div class="flex items-center justify-between my-6">
-      <span class="w-72 border">search</span>
-
-      <ul class="flex items-center space-x-3">
-        {
-          categories.map((category) => (
-            <a
-              href={`/blog/category/${category}`}
-              class={cn(
-                "capitalize",
-                buttonVariants({ variant: "outline", size: "sm" })
-              )}
-            >
-              {category}
-            </a>
-          ))
-        }
-      </ul>
-    </div>
-
-    <hr class="mb-8" />
+    <BlogHeader title="Blog" />
 
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 md:gap-y-16 lg:gap-x-8"

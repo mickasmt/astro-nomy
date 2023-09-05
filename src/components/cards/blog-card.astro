@@ -22,12 +22,19 @@ const post = Astro.props;
   </a>
 
   <div class="flex items-center justify-between">
-    <a href={`/blog/${post.slug}/`}>
-      <Badge radius="md" className="capitalize">
+    <a href={`/blog/category/${post.data.category}`}>
+      <Badge
+        radius="md"
+        className="capitalize"
+        transition:name={"category-" + post.slug}
+      >
         {post.data.category}
       </Badge>
     </a>
-    <span class="font-medium text-muted-foreground" transition:name={"date-" + post.slug}>
+    <span
+      class="font-medium text-muted-foreground"
+      transition:name={"date-" + post.slug}
+    >
       {formatDate(post.data.pubDate)}
     </span>
   </div>
