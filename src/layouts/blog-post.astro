@@ -1,8 +1,10 @@
 ---
 import { Badge } from "@/components/ui/badge";
-import { formatDate } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { cn, formatDate } from "@/lib/utils";
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "./main-layout.astro";
+import { Icon } from "astro-icon";
 
 type Props = {
   post: CollectionEntry<"blog">["data"];
@@ -15,7 +17,19 @@ const { title, description, pubDate, updatedDate, coverImage, category } =
 ---
 
 <MainLayout title={title} description={description}>
-  <div class="mx-auto max-w-screen-md py-10">
+  <div class="relative mx-auto max-w-screen-md py-10">
+    <a
+      href="/blog"
+      class={cn(
+        buttonVariants({ variant: "ghost" }),
+        "absolute left-[-200px] top-10 hidden xl:inline-flex text-muted-foreground"
+      )}
+      transition:animate="slide"
+    >
+      <Icon name="lucide:chevron-left" class="mr-2 h-4 w-4" />
+      See all posts
+    </a>
+
     <article class="prose max-w-none">
       <a href={`/blog/category/${category}`}>
         <Badge

@@ -1,5 +1,5 @@
 ---
-title: 'First Post Delight: Navigating the World of Web Development'
+title: 'First Post'
 description: 'Embark on a web development adventure with our inaugural post, diving deep into industry insights and emerging trends.'
 pubDate: 'Jul 08 2022'
 coverImage: '/blog-placeholder-3.jpg'

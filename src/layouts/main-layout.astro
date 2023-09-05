@@ -7,7 +7,13 @@ import { buttonVariants } from "@/components/ui/button";
 import { marketingConfig } from "@/config/marketing";
 import { cn } from "@/lib/utils";
 
-const { title, description } = Astro.props;
+type Props = {
+  title: string;
+  description: string;
+  className?: string;
+}
+
+const { title, description, className } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,7 +21,7 @@ const { title, description } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="min-h-screen bg-background font-sans antialiased">
+  <body class="flex flex-col min-h-screen bg-background font-sans antialiased">
     <Header items={marketingConfig.mainNav}>
       <div>
         <a
@@ -30,7 +36,7 @@ const { title, description } = Astro.props;
       </div>
     </Header>
 
-    <main>
+    <main class={cn(className)}>
       <slot />
     </main>
 
