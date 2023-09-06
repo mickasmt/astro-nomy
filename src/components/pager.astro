@@ -1,0 +1,67 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import { docsConfig } from "@/config/docs";
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-icon";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  slug: CollectionEntry<"docs">["slug"];
+};
+
+export function getPagerForDoc(slug: string) {
+  const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
+  const activeIndex = flattenedLinks.findIndex(
+    (link) => `/docs/${slug}` === link?.href
+  );
+  const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
+  const next =
+    activeIndex !== flattenedLinks.length - 1
+      ? flattenedLinks[activeIndex + 1]
+      : null;
+  return {
+    prev,
+    next,
+  };
+}
+
+// @ts-ignore
+export function flatten(links: { items? }[]) {
+  return links.reduce((flat, link) => {
+    return flat.concat(link.items ? flatten(link.items) : link);
+  }, []);
+}
+
+const { slug } = Astro.props;
+const pager = getPagerForDoc(slug);
+
+if (!pager) {
+  return null;
+}
+---
+
+<div class="flex flex-row items-center justify-between">
+  {
+    pager?.prev && (
+      <a
+        href={pager.prev.href}
+        class={cn(buttonVariants({ variant: "ghost" }))}
+      >
+        <Icon name="lucide:chevron-left" class="mr-2 h-4 w-4" />
+
+        {pager.prev.title}
+      </a>
+    )
+  }
+  {
+    pager?.next && (
+      <a
+        href={pager.next.href}
+        class={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
+      >
+        {pager.next.title}
+        <Icon name="lucide:chevron-right" class="mr-2 h-4 w-4" />
+      </a>
+    )
+  }
+</div>

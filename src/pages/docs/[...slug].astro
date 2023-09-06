@@ -1,6 +1,7 @@
 ---
 import DocsLayout from "@/layouts/docs-layout.astro";
 import DocsPageHeader from "@/components/page-header.astro";
+import DocsPager from "@/components/pager.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -17,7 +18,7 @@ const doc = Astro.props;
 const slug = Astro.params.slug;
 const { Content } = await doc.render();
 
-if (!slug) {
+if (!slug || !doc) {
   return new Response(null, {
     status: 404,
     statusText: "Not found",
@@ -35,8 +36,7 @@ if (!slug) {
         <Content />
       </article>
       <hr class="my-4 md:my-6" />
-      <!-- <DocsPager doc={doc} /> -->
-       DocsPager
+      <DocsPager slug={doc.slug} />
     </div>
     <div class="hidden text-sm xl:block">
       <div

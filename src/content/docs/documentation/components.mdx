@@ -42,7 +42,7 @@ This is a danger callout. It uses the props `type="danger"`.
 ### 2. Card
 
 ```mdx
-<Card client:only  href="#">
+<Card href="#">
 
 #### Heading
 
@@ -51,7 +51,7 @@ You can use **markdown** inside cards.
 </Card>
 ```
 
-<Card client:only  href="#">
+<Card href="#">
 
 #### Heading
 
@@ -63,12 +63,12 @@ You can also use HTML to embed cards in a grid.
 
 ```mdx
 <div className="grid grid-cols-2 gap-4">
-  <Card client:only  href="#">
+  <Card href="#">
     #### Card One 
     You can use **markdown** inside cards.
   </Card>
 
-  <Card client:only  href="#">
+  <Card href="#">
     #### Card Two 
     You can also use `inline code` and code blocks.
   </Card>
@@ -76,12 +76,12 @@ You can also use HTML to embed cards in a grid.
 ```
 
 <div className="grid grid-cols-2 gap-4">
-  <Card client:only  href="#">
+  <Card href="#">
     #### Card One 
     You can use **markdown** inside cards.
   </Card>
 
-  <Card client:only  href="#">
+  <Card href="#">
     #### Card Two 
     You can also use `inline code` and code blocks.
   </Card>
