@@ -1,7 +1,7 @@
 ---
 title: 'Second post'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 22 2022'
+pubDate: 'Jul 12 2022'
 coverImage: '/blog-placeholder-4.jpg'
 category: 'review'
 ---

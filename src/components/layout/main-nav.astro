@@ -2,6 +2,7 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import type { MainNavItem } from "@/types";
+import { Icon } from "astro-icon";
 
 type Props = {
   items: MainNavItem[];
@@ -11,7 +12,12 @@ const { items } = Astro.props;
 const { pathname } = Astro.url;
 ---
 
-<h2 class="text-xl font-heading"><a href="/">{siteConfig.name}</a></h2>
+<a href="/" class="hidden items-center space-x-2 md:flex">
+  <Icon name="ic:round-rocket-launch" class="h-7 w-7" />
+  <span class="hidden text-xl font-heading sm:inline-block">
+    {siteConfig.name}
+  </span>
+</a>
 
 {
   items?.length ? (
