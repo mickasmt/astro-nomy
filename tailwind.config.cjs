@@ -14,6 +14,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        sans: ["Inter", ...fontFamily.sans],
         heading: ["CalSans Semibold", ...fontFamily.sans],
       },
       height: {
