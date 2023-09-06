@@ -12,17 +12,17 @@ const { items } = Astro.props;
 const { pathname } = Astro.url;
 ---
 
-<div class="flex items-start gap-6 md:gap-10">
+<div class="flex items-center gap-6 md:gap-10">
   <a href="/" class="flex items-center space-x-2.5">
     <Icon name="ic:round-rocket-launch" class="h-6 w-6" />
-    <span class="hidden text-lg font-heading sm:inline-block">
+    <span class="hidden font-bold sm:inline-block">
       {siteConfig.name}
     </span>
   </a>
 
   {
     items?.length ? (
-      <nav class="hidden gap-6 md:flex">
+      <nav class="hidden gap-6 md:flex text-sm">
         {items?.map((item) => (
           <a
             href={item.disabled ? "#" : item.href}

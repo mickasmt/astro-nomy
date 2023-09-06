@@ -1,0 +1,50 @@
+---
+import DocsLayout from "@/layouts/docs-layout.astro";
+import DocsPageHeader from "@/components/page-header.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
+  return docs.map((doc) => ({
+    params: { slug: doc.slug },
+    props: doc,
+  }));
+}
+
+type Props = CollectionEntry<"docs">;
+
+const doc = Astro.props;
+const slug = Astro.params.slug;
+const { Content } = await doc.render();
+
+if (!slug) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+---
+
+<DocsLayout title={doc.data.title} description={doc.data.description}>
+  <main
+    class="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]"
+  >
+    <div class="mx-auto w-full min-w-0">
+      <DocsPageHeader heading={doc.data.title} text={doc.data.description} />
+      <article class="prose max-w-none">
+        <Content />
+      </article>
+      <hr class="my-4 md:my-6" />
+      <!-- <DocsPager doc={doc} /> -->
+       DocsPager
+    </div>
+    <div class="hidden text-sm xl:block">
+      <div
+        class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10"
+      >
+        <!-- <DashboardTableOfContents toc={toc} /> -->
+         DashboardTableOfContents
+      </div>
+    </div>
+  </main>
+</DocsLayout>

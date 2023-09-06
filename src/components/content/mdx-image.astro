@@ -1,0 +1,26 @@
+---
+import { cn } from "@/lib/utils";
+
+import { Image } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}
+const { src, alt, className, height, width, ...attrs } = Astro.props;
+---
+
+<Image
+  class:list={cn(
+    "w-full h-full object-cover rounded-md overflow-hidden border",
+    className
+  )}
+  width={width}
+  height={height}
+  src={src}
+  alt={alt}
+/>

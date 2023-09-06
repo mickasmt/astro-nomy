@@ -2,17 +2,18 @@
 import BaseHead from "@/components/layout/base-head.astro";
 import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
+import DocsSidebarNav from "@/components/layout/sidebar-nav.astro";
 import TailwindIndicator from "@/components/tailwind-indicator.astro";
+import { buttonVariants } from "@/components/ui/button";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 
 type Props = {
   title: string;
   description: string;
-  className?: string;
 };
 
-const { title, description, className } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,14 +21,35 @@ const { title, description, className } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="min-h-screen bg-background font-sans antialiased">
-    <Header items={docsConfig.mainNav} />
+  <body class="flex flex-col min-h-screen bg-background font-sans antialiased">
+    <Header items={docsConfig.mainNav} className="border-b">
+      <div>
+        <a
+          href="/login"
+          class={cn(
+            buttonVariants({ variant: "secondary", size: "sm" }),
+            "px-4"
+          )}
+        >
+          Login
+        </a>
+      </div>
+    </Header>
 
-    <main class={cn(className)}>
-      <slot />
-    </main>
+    <div class="container flex-1">
+      <div
+        class="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10"
+      >
+        <aside
+          class="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r py-6 pr-2 md:sticky md:block lg:py-8"
+        >
+          <DocsSidebarNav items={docsConfig.sidebarNav} />
+        </aside>
+        <slot />
+      </div>
+    </div>
 
-    <Footer />
+    <Footer className="border-t" />
     <TailwindIndicator />
   </body>
 </html>
