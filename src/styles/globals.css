@@ -83,10 +83,6 @@
     @apply bg-background text-foreground;
   }
 
-  .f-container {
-    @apply w-full mx-auto px-4 max-w-screen-xl;
-  }
-
   .balance-text {
     text-wrap: balance;
   }
