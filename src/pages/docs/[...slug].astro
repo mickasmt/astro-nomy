@@ -18,7 +18,7 @@ const doc = Astro.props;
 const slug = Astro.params.slug;
 const { Content } = await doc.render();
 
-if (!slug || !doc) {
+if (!slug) {
   return new Response(null, {
     status: 404,
     statusText: "Not found",
@@ -43,7 +43,7 @@ if (!slug || !doc) {
         class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10"
       >
         <!-- <DashboardTableOfContents toc={toc} /> -->
-         DashboardTableOfContents
+        DashboardTableOfContents
       </div>
     </div>
   </main>

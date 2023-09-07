@@ -11,6 +11,7 @@ type Props = {
 
 const { title } = Astro.props;
 const { category } = Astro.params;
+const { pathname } = Astro.url;
 ---
 
 <h1 class="inline-block font-heading text-4xl">{title}</h1>
@@ -24,6 +25,18 @@ const { category } = Astro.params;
   >
 
   <ul class="flex items-center max-md:w-full space-x-2 md:space-x-3">
+    <a
+      href={`/blog`}
+      class={cn(
+        pathname === "/blog" ? "select-none" : "",
+        buttonVariants({
+          variant: pathname === "/blog" ? "default" : "outline",
+          size: "sm",
+        })
+      )}
+    >
+      All posts
+    </a>
     {
       categories.map((item) => (
         <a

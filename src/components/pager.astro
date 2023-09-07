@@ -10,10 +10,13 @@ type Props = {
 };
 
 export function getPagerForDoc(slug: string) {
-  const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
-  const activeIndex = flattenedLinks.findIndex(
+  console.log("=============");
+  const flattenedLinks = [...flatten(docsConfig.sidebarNav)];
+  let activeIndex = flattenedLinks.findIndex(
     (link) => `/docs/${slug}` === link?.href
   );
+
+  activeIndex = Math.max(activeIndex, 0);
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
   const next =
     activeIndex !== flattenedLinks.length - 1
