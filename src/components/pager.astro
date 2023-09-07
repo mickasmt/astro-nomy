@@ -10,7 +10,6 @@ type Props = {
 };
 
 export function getPagerForDoc(slug: string) {
-  console.log("=============");
   const flattenedLinks = [...flatten(docsConfig.sidebarNav)];
   let activeIndex = flattenedLinks.findIndex(
     (link) => `/docs/${slug}` === link?.href
