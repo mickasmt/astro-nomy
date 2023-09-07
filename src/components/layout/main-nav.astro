@@ -13,8 +13,10 @@ const { pathname } = Astro.url;
 ---
 
 <div class="flex items-center gap-6 md:gap-10">
-  <a href="/" class="flex items-center space-x-2.5">
-    <Icon name="ic:round-rocket-launch" class="h-6 w-6" />
+  <a href="/" class="flex items-center space-x-2">
+
+    <!-- Loads the SVG in `/src/icons/stars-outline.svg` -->
+    <Icon name="stars-outline" class="h-8 w-8" />
     <span class="hidden font-bold sm:inline-block">
       {siteConfig.name}
     </span>
@@ -22,12 +24,12 @@ const { pathname } = Astro.url;
 
   {
     items?.length ? (
-      <nav class="hidden gap-6 md:flex text-sm">
+      <nav class="hidden gap-6 md:flex">
         {items?.map((item) => (
           <a
             href={item.disabled ? "#" : item.href}
             class={cn(
-              "flex items-center font-medium transition-colors hover:text-foreground/80",
+              "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
               item.href == pathname ? "text-foreground" : "text-foreground/60",
               item.disabled && "cursor-not-allowed opacity-80"
             )}
