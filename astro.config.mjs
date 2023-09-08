@@ -9,11 +9,26 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://example.com",
   integrations: [
-    mdx(),
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: { theme: 'github-dark-dimmed' },
+      // shikiConfig: { theme: 'github-dark' },
+      // remarkPlugins: [remarkToc],
+      // rehypePlugins: [rehypeMinifyHtml],
+      // remarkRehype: { footnoteLabel: 'Footnotes' },
+      gfm: false,
+    }),
     sitemap(),
     react(),
     tailwind({
       applyBaseStyles: false,
     }),
   ],
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark-dimmed',
+      // langs: [],
+      wrap: true,
+    },
+  },
 });

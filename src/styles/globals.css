@@ -4,16 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@font-face {
-  font-family: 'CalSans Semibold';
-  src: url('/fonts/calsans-semibold.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -83,16 +73,33 @@
 }
 
 @layer base {
+  @font-face {
+    font-family: 'CalSans Semibold';
+    src: url('/fonts/calsans-semibold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground font-sans;
-    /* font-feature-settings: "rlig" 1, "calt" 1; */
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   .balance-text {
     text-wrap: balance;
+  }
+
+  .font-icon-callout {
+    font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  }
+
+  /* MdxComponent: For <code></code> with no parent <pre></pre> */
+  :not(pre) > code {
+    @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm bg-background text-foreground;
   }
 }

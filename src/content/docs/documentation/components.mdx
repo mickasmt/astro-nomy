@@ -2,8 +2,6 @@
 title: Components
 description: Use React components in Markdown using MDX.
 ---
-import Callout from '@/components/callout.astro';
-import Card from '@/components/content/mdx-card.astro';
 
 The following components are available out of the box for use in Markdown.
 
@@ -20,20 +18,25 @@ This is a default callout. You can embed **Markdown** inside a `callout`.
 
 </Callout>
 ```
-
 <Callout>
 
 This is a default callout. You can embed **Markdown** inside a `callout`.
 
 </Callout>
 
-<Callout type="warning">
+<Callout icon="💡" type="info">
+
+This is a info callout. It uses the props `type="info"`.
+
+</Callout>
+
+<Callout icon="⚠️" type="warning">
 
 This is a warning callout. It uses the props `type="warning"`.
 
 </Callout>
 
-<Callout type="danger">
+<Callout  icon="🚨" type="danger">
 
 This is a danger callout. It uses the props `type="danger"`.
 

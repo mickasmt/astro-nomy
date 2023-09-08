@@ -3,6 +3,7 @@ import DocsLayout from "@/layouts/docs-layout.astro";
 import DocsPageHeader from "@/components/page-header.astro";
 import DocsPager from "@/components/pager.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { MdxComponents } from "@/components/content/mdx-components";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
@@ -18,7 +19,7 @@ const doc = Astro.props;
 const slug = Astro.params.slug;
 const { Content } = await doc.render();
 
-if (!slug) {
+if (!slug || !doc) {
   return new Response(null, {
     status: 404,
     statusText: "Not found",
@@ -32,9 +33,9 @@ if (!slug) {
   >
     <div class="mx-auto w-full min-w-0">
       <DocsPageHeader heading={doc.data.title} text={doc.data.description} />
-      <article class="prose max-w-none">
-        <Content />
-      </article>
+      
+      <Content components={MdxComponents} />
+      
       <hr class="my-4 md:my-6" />
       <DocsPager slug={doc.slug} />
     </div>
