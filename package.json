@@ -32,6 +32,9 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "mdast-util-toc": "^7.0.0",
+    "remark": "^14.0.3",
+    "unist-util-visit": "^5.0.0"
   }
 }

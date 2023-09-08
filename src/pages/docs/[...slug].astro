@@ -1,9 +1,11 @@
 ---
-import DocsLayout from "@/layouts/docs-layout.astro";
+import { MdxComponents } from "@/components/content/mdx-components";
 import DocsPageHeader from "@/components/page-header.astro";
 import DocsPager from "@/components/pager.astro";
+import { DashboardTableOfContents } from "@/components/toc";
+import DocsLayout from "@/layouts/docs-layout.astro";
+import { getTableOfContents } from "@/lib/toc";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { MdxComponents } from "@/components/content/mdx-components";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
@@ -17,6 +19,8 @@ type Props = CollectionEntry<"docs">;
 
 const doc = Astro.props;
 const slug = Astro.params.slug;
+const toc = await getTableOfContents(doc.body)
+
 const { Content } = await doc.render();
 
 if (!slug || !doc) {
@@ -43,8 +47,7 @@ if (!slug || !doc) {
       <div
         class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10"
       >
-        <!-- <DashboardTableOfContents toc={toc} /> -->
-        DashboardTableOfContents
+        <DashboardTableOfContents toc={toc} client:load />
       </div>
     </div>
   </main>
