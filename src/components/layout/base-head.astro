@@ -59,5 +59,37 @@ const headTitle = title ? `${title} | ${siteConfig.name}` : title;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- View Transitions -->
 <ViewTransitions />
+
+<script is:inline>
+const theme = (() => {
+  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+    return localStorage.getItem("theme");
+  }
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+  return "light";
+})();
+
+if (theme === "light") {
+  document.documentElement.classList.remove("dark");
+} else {
+  document.documentElement.classList.add("dark");
+}
+window.localStorage.setItem("theme", theme);
+</script>
+
+<!-- Prevent flash between navigations for the dark mode -->
+<script is:inline>
+  const setDarkMode = () => {
+    if (localStorage.theme) {
+      document.documentElement.classList.add(theme);
+    }
+  };
+
+  // Runs on initial navigation
+  setDarkMode();
+  // Runs on view transitions navigation
+  document.addEventListener('astro:after-swap', setDarkMode);
+</script>

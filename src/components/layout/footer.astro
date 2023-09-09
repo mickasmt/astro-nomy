@@ -2,6 +2,7 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 type Props = {
   className?: string;
@@ -29,7 +30,7 @@ const { className } = Astro.props;
         >
           mickasmt
         </a>
-        . Based on{" "}
+         . Based on{" "}
         <a
           href="https://github.com/shadcn-ui/taxonomy"
           target="_blank"
@@ -38,7 +39,7 @@ const { className } = Astro.props;
         >
           shadcn-ui/taxonomy
         </a>
-        . Hosted on{" "}
+         . Hosted on{" "}
         <a
           href="https://vercel.com"
           target="_blank"
@@ -47,7 +48,7 @@ const { className } = Astro.props;
         >
           Vercel
         </a>
-        . The source code is available on{" "}
+         . The source code is available on{" "}
         <a
           href={siteConfig.links.github}
           target="_blank"
@@ -59,7 +60,7 @@ const { className } = Astro.props;
         .
       </p>
     </div>
-    <!-- <ModeToggle /> -->
-    <span>toggle</span>
+
+    <ThemeToggle client:idle />
   </div>
 </footer>
