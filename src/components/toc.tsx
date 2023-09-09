@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { useMounted } from "@/hooks/use-mounted";
 import type { TableOfContents } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 
@@ -9,31 +8,24 @@ interface TocProps {
 }
 
 export function DashboardTableOfContents({ toc }: TocProps) {
-  const itemIds = React.useMemo(
-    () =>
-      toc.items
-        ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
-            .flat()
-            .filter(Boolean)
-            .map((id) => id?.split("#")[1])
-        : [],
-    [toc]
-  );
+  const itemIds = toc.items
+    ? toc.items
+        .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+        .flat()
+        .filter(Boolean)
+        .map((id) => id?.split("#")[1])
+    : [];
   const activeHeading = useActiveItem(itemIds);
-  const mounted = useMounted();
 
   if (!toc?.items) {
     return null;
   }
 
-  return mounted ? (
+  return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
-  ) : (
-    <div />
   );
 }
 

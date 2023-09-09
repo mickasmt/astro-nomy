@@ -94,6 +94,10 @@
     text-wrap: balance;
   }
 
+  .callout > * {
+    @apply my-0 !important;
+  }
+  
   .font-icon-callout {
     font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   }

@@ -13,7 +13,7 @@ export default defineConfig({
       syntaxHighlight: 'shiki',
       shikiConfig: { theme: 'github-dark-dimmed' },
       // rehypePlugins: [rehypeMinifyHtml],
-      gfm: false,
+      gfm: true,
     }),
     sitemap(),
     react(),
