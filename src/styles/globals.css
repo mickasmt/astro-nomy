@@ -94,6 +94,11 @@
     text-wrap: balance;
   }
 
+  /* Documentation part */
+  .docs-grid-cols-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4;
+  }
+
   .callout > * {
     @apply my-0 !important;
   }
@@ -106,4 +111,5 @@
   :not(pre) > code {
     @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm bg-background text-foreground;
   }
+
 }

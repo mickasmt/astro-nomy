@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
       <h1
         class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl balance-text"
       >
-        A starter template built using Astro 3.0 + shadcn ui.
+        A starter template built using Astro 3.0 + shadcn<span class="font-sans">/</span>ui.
       </h1>
       <p
         class="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 balance-text"
@@ -29,7 +29,10 @@ import { cn } from "@/lib/utils";
         shadcn-ui/taxonomy. Follow along as we figure this out together.
       </p>
       <div class="space-x-4">
-        <a href="/docs/getting-started/" class={cn(buttonVariants({ size: "lg" }))}>
+        <a
+          href="/docs/getting-started/"
+          class={cn(buttonVariants({ size: "lg" }))}
+        >
           Get Started
         </a>
         <a
@@ -54,11 +57,11 @@ import { cn } from "@/lib/utils";
         Features
       </h2>
       <p
-        class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+        class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7 balance-text"
       >
-        This project is an experiment to see how a modern app, with features
-        like auth, subscriptions, API routes, and static pages would work in
-        Astro.js 3.0 app dir.
+        This project is a replication of Taxonomy using Astro v3 and shadcn/ui.
+        Some features, such as authentication, subscriptions and API routes,
+        have not been implemented yet.
       </p>
     </div>
     <div
@@ -73,16 +76,16 @@ import { cn } from "@/lib/utils";
           >
             <path
               d="M19.4924 65.9282C15.6165 62.432 14.4851 55.0859 16.0999 49.7638C18.8998 53.1193 22.7793 54.1822 26.7977 54.7822C33.0013 55.7081 39.0937 55.3618 44.8565 52.5637C45.5158 52.2434 46.125 51.8174 46.8454 51.386C47.3861 52.9341 47.5268 54.497 47.338 56.0877C46.8787 59.9617 44.9251 62.9542 41.8177 65.2227C40.5752 66.13 39.2604 66.9411 37.9771 67.7967C34.0346 70.4262 32.9679 73.5095 34.4494 77.9946C34.4846 78.1038 34.5161 78.2131 34.5957 78.4797C32.5828 77.5909 31.1124 76.2965 29.9921 74.5946C28.8088 72.7984 28.2458 70.8114 28.2162 68.6615C28.2014 67.6152 28.2014 66.5597 28.0588 65.5282C27.7107 63.0135 26.5144 61.8876 24.2608 61.8227C21.9479 61.7561 20.1183 63.1672 19.6331 65.3893C19.5961 65.5597 19.5424 65.7282 19.4887 65.9263L19.4924 65.9282Z"
-              fill="#17191E"></path>
+            ></path>
             <path
               d="M0 51.3932C0 51.3932 10.5979 46.2433 21.2254 46.2433L29.2382 21.5069C29.5381 20.3106 30.4141 19.4977 31.4029 19.4977C32.3918 19.4977 33.2677 20.3106 33.5677 21.5069L41.5804 46.2433C54.1672 46.2433 62.8058 51.3932 62.8058 51.3932C62.8058 51.3932 44.8044 2.47586 44.7692 2.37772C44.2526 0.931458 43.3804 0 42.2045 0H20.6032C19.4273 0 18.5903 0.931458 18.0384 2.37772C17.9995 2.47401 0 51.3932 0 51.3932Z"
-              fill="#17191E"></path>
+            ></path>
           </svg>
 
           <div class="space-y-2">
-            <h3 class="font-bold">Astro.js 3.0</h3>
+            <h3 class="font-bold">Astro 3.0</h3>
             <p class="text-sm text-muted-foreground">
-              Layouts, Loading UI and View Transitions.
+              Layouts, Image, View Transitions and more.
             </p>
           </div>
         </div>
@@ -97,7 +100,7 @@ import { cn } from "@/lib/utils";
           <div class="space-y-2">
             <h3 class="font-bold">React 18</h3>
             <p class="text-sm text-muted-foreground">
-              Shadcn/ui components & config.
+              Play with React components & config. Use hook.
             </p>
           </div>
         </div>
@@ -112,22 +115,42 @@ import { cn } from "@/lib/utils";
           <div class="space-y-2">
             <h3 class="font-bold">Database</h3>
             <p class="text-sm text-muted-foreground">
-              ORM using Prisma and deployed on PlanetScale.
+              <b>Not sure yet</b>. Using Prisma/PlanetScale or CMS.
             </p>
           </div>
         </div>
       </div>
       <div class="relative overflow-hidden rounded-lg border bg-background p-2">
         <div class="flex h-[180px] flex-col justify-between rounded-md p-6">
-          <svg viewBox="0 0 24 24" class="h-12 w-12 fill-current">
-            <path
-              d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"
-            ></path>
-          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 256 256"
+            class="h-12 w-12"
+            ><rect width="256" height="256" fill="none"></rect><line
+              x1="208"
+              y1="128"
+              x2="128"
+              y2="208"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"></line><line
+              x1="192"
+              y1="40"
+              x2="40"
+              y2="192"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"></line></svg
+          >
           <div class="space-y-2">
-            <h3 class="font-bold">Components</h3>
+            <h3 class="font-bold">Shadcn/ui</h3>
             <p class="text-sm text-muted-foreground">
-              UI components built using Radix UI and styled with Tailwind CSS.
+              UI components built using <b>shadcn/ui</b>. (Radix UI and Tailwind
+              CSS)
             </p>
           </div>
         </div>
@@ -146,7 +169,7 @@ import { cn } from "@/lib/utils";
           <div class="space-y-2">
             <h3 class="font-bold">Authentication</h3>
             <p class="text-sm text-muted-foreground">
-              Authentication using astro-auth.
+              <b>Not sure yet</b>. Authentication using Auth.js (astro-auth).
             </p>
           </div>
         </div>
@@ -161,16 +184,18 @@ import { cn } from "@/lib/utils";
           <div class="space-y-2">
             <h3 class="font-bold">Subscriptions</h3>
             <p class="text-sm text-muted-foreground">
-              Free and paid subscriptions using Stripe.
+              <b>Not sure yet</b>. Free and paid subscriptions using Stripe.
             </p>
           </div>
         </div>
       </div>
     </div>
     <div class="mx-auto text-center md:max-w-[58rem]">
-      <p class="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+      <p
+        class="leading-normal text-muted-foreground sm:text-lg sm:leading-7 balance-text"
+      >
         Astronomy also includes a blog and a full-featured documentation site
-        built using Contentlayer and MDX.
+        built using Markdown and MDX from Astro.
       </p>
     </div>
   </section>
