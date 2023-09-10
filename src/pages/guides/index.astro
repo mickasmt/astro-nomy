@@ -1,13 +1,13 @@
 ---
 import GuideCard from "@/components/cards/guide-card.astro";
 import DocsPageHeader from "@/components/page-header.astro";
-import MainLayout from "@/layouts/main-layout.astro";
+import DocsLayout from "@/layouts/docs-layout.astro";
 import { getGuides } from "@/lib/fetchers";
 
 const guides = await getGuides();
 ---
 
-<MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
+<DocsLayout title="Blog" description="Lorem ipsum dolor sit amet">
   <section class="container max-w-5xl py-10">
     <DocsPageHeader
       heading="Guides"
@@ -26,4 +26,4 @@ const guides = await getGuides();
       )
     }
   </section>
-</MainLayout>
+</DocsLayout>

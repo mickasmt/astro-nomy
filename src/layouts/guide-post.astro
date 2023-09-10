@@ -3,21 +3,20 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, formatDate } from "@/lib/utils";
 import { Icon } from "astro-icon";
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import MainLayout from "./main-layout.astro";
+import DocsLayout from "./docs-layout.astro";
 
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<"guides">;
 
 const slug = Astro.props.slug;
-const { title, description, pubDate, updatedDate, coverImage, category } =
+const { title, description, pubDate } =
   Astro.props.data;
 ---
 
-<MainLayout title={title} description={description}>
+<DocsLayout title={title} description={description}>
   <div class="relative container max-w-screen-md py-10">
     <a
-      href="/blog"
+      href="/guides"
       class={cn(
         buttonVariants({ variant: "ghost" }),
         "absolute left-[-200px] top-10 hidden xl:inline-flex text-muted-foreground"
@@ -25,38 +24,17 @@ const { title, description, pubDate, updatedDate, coverImage, category } =
       transition:animate="slide"
     >
       <Icon name="lucide:chevron-left" class="mr-2 h-4 w-4" />
-       See all posts
+      See all guides
     </a>
 
     <article class="prose dark:prose-invert max-w-none">
-      <a href={`/blog/category/${category}`}>
-        <Badge
-          radius="md"
-          className="capitalize"
-          transition:name={"category-" + slug}
-        >
-          {category}
-        </Badge>
-      </a>
-      <Image
-        class="rounded-xl overflow-hidden my-6"
-        width={1020}
-        height={510}
-        src={coverImage}
-        alt=""
-        transition:name={"img-" + slug}
-      />
+      
       <div class="flex items-center justify-between">
         <span
           class="font-medium text-muted-foreground"
           transition:name={"date-" + slug}
         >
           {formatDate(pubDate)}
-          {
-            updatedDate && (
-              <span>- Last updated on {formatDate(updatedDate)}</span>
-            )
-          }
         </span>
       </div>
       <h1 class="font-heading text-4xl my-4" transition:name={"title-" + slug}>
@@ -67,4 +45,4 @@ const { title, description, pubDate, updatedDate, coverImage, category } =
       <slot />
     </article>
   </div>
-</MainLayout>
+</DocsLayout>

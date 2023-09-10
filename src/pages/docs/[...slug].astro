@@ -1,8 +1,10 @@
 ---
 import { MdxComponents } from "@/components/content/mdx-components";
+import DocsSidebarNav from "@/components/layout/sidebar-nav.astro";
 import DocsPageHeader from "@/components/page-header.astro";
 import DocsPager from "@/components/pager.astro";
 import { DashboardTableOfContents } from "@/components/toc";
+import { docsConfig } from "@/config/docs";
 import DocsLayout from "@/layouts/docs-layout.astro";
 import { getTableOfContents } from "@/lib/toc";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -19,7 +21,7 @@ type Props = CollectionEntry<"docs">;
 
 const doc = Astro.props;
 const slug = Astro.params.slug;
-const toc = await getTableOfContents(doc.body)
+const toc = await getTableOfContents(doc.body);
 
 const { Content } = await doc.render();
 
@@ -32,23 +34,37 @@ if (!slug || !doc) {
 ---
 
 <DocsLayout title={doc.data.title} description={doc.data.description}>
-  <main
-    class="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]"
-  >
-    <div class="mx-auto w-full min-w-0">
-      <DocsPageHeader heading={doc.data.title} text={doc.data.description} />
-      
-      <Content components={MdxComponents} />
-      
-      <hr class="my-4 md:my-6" />
-      <DocsPager slug={doc.slug} />
-    </div>
-    <div class="hidden text-sm xl:block">
-      <div
-        class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10"
+  <div class="container flex-1">
+    <div
+      class="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10"
+    >
+      <aside
+        class="fixed top-16 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r py-6 pr-2 md:sticky md:block lg:py-8"
       >
-        <DashboardTableOfContents toc={toc} client:load />
-      </div>
+        <DocsSidebarNav items={docsConfig.sidebarNav} />
+      </aside>
+      <main
+        class="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]"
+      >
+        <div class="mx-auto w-full min-w-0">
+          <DocsPageHeader
+            heading={doc.data.title}
+            text={doc.data.description}
+          />
+
+          <Content components={MdxComponents} />
+
+          <hr class="my-4 md:my-6" />
+          <DocsPager slug={doc.slug} />
+        </div>
+        <div class="hidden text-sm xl:block">
+          <div
+            class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10"
+          >
+            <DashboardTableOfContents toc={toc} client:load />
+          </div>
+        </div>
+      </main>
     </div>
-  </main>
+  </div>
 </DocsLayout>

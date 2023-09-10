@@ -1,28 +1,30 @@
 ---
-import BlogPost from '@/layouts/blog-post.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { MdxComponents } from "@/components/content/mdx-components";
+import GuidePostLayout from "@/layouts/guide-post.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const guides = await getCollection("guides");
+  return guides.map((guide) => ({
+    params: { slug: guide.slug },
+    props: guide,
+  }));
 }
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"guides">;
 
-const post = Astro.props;
+const guide = Astro.props;
 const slug = Astro.params.slug;
-const { Content } = await post.render();
+const { Content } = await guide.render();
 
-if (!slug) {
+if (!slug || !guide) {
   return new Response(null, {
     status: 404,
-    statusText: 'Not found'
+    statusText: "Not found",
   });
 }
 ---
-<BlogPost post={post.data} slug={slug}>
-	<Content />
-</BlogPost>
+
+<GuidePostLayout {...guide}>
+  <Content components={MdxComponents} />
+</GuidePostLayout>

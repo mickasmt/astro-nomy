@@ -1,5 +1,5 @@
 ---
-import BlogPost from '@/layouts/blog-post.astro';
+import BlogPostLayout from '@/layouts/blog-post.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -16,13 +16,13 @@ const post = Astro.props;
 const slug = Astro.params.slug;
 const { Content } = await post.render();
 
-if (!slug) {
+if (!slug || !post) {
   return new Response(null, {
     status: 404,
     statusText: 'Not found'
   });
 }
 ---
-<BlogPost post={post.data} slug={slug}>
+<BlogPostLayout {...post}>
 	<Content />
-</BlogPost>
+</BlogPostLayout>
