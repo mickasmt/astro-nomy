@@ -5,9 +5,6 @@ import MainLayout from "@/layouts/main-layout.astro";
 import { getPosts } from "@/lib/fetchers";
 
 const posts = await getPosts();
-const categories = [
-  ...new Set([].concat.apply(posts.map((post) => post.data.category))),
-];
 ---
 
 <MainLayout title="Blog" description="Lorem ipsum dolor sit amet">

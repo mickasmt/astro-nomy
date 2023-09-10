@@ -26,4 +26,18 @@ const docs = defineCollection({
   }),
 });
 
-export const collections = { blog , docs };
+const guides = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    published: z.boolean().default(true),
+    featured: z.boolean().default(false),
+    pubDate: z
+      .string()
+      .or(z.date())
+      .transform((val) => new Date(val)),
+  }),
+});
+
+
+export const collections = { blog , docs, guides };

@@ -2,6 +2,9 @@
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 ---
