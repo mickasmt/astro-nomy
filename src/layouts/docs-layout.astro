@@ -5,6 +5,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
+import { siteConfig } from "@/config/site";
+import Icon from "astro-icon";
 
 type Props = {
   title: string;
@@ -16,14 +18,12 @@ const { title, description } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <Header items={docsConfig.mainNav} className="border-b">
-    <div>
-      <a
-        href="/login"
-        class={cn(buttonVariants({ variant: "secondary", size: "sm" }), "px-4")}
-      >
-        Login
+    <nav>
+      <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
+        <Icon name="mdi:github" className="h-8 w-8" />
+        <span class="sr-only">GitHub</span>
       </a>
-    </div>
+    </nav>
   </Header>
 
   <slot />

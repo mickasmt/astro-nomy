@@ -17,14 +17,14 @@ const { title, description, mainClass } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <Header items={marketingConfig.mainNav}>
-    <div>
+    <nav>
       <a
         href="/login"
         class={cn(buttonVariants({ variant: "secondary", size: "sm" }), "px-4")}
       >
         Login
       </a>
-    </div>
+    </nav>
   </Header>
 
   <main class={cn(mainClass)}>
