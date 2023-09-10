@@ -20,18 +20,28 @@ const guide = Astro.props.data;
   }
   <div class="flex flex-col justify-between space-y-4">
     <div class="space-y-2">
-      <h2 class="text-xl font-medium tracking-tight">
+      <h2 class="font-heading text-2xl" transition:name={"title-" + slug}>
         {guide.title}
       </h2>
       {
-        guide.description && (
-          <p class="text-muted-foreground">{guide.description}</p>
+        guide.description && (  
+          <p
+            class="text-muted-foreground"
+            transition:name={"desc-" + slug}
+          >
+            {guide.description}
+          </p>
         )
       }
     </div>
     {
       guide.pubDate && (
-        <p class="text-sm text-muted-foreground">{formatDate(guide.pubDate)}</p>
+        <span
+          class="font-medium text-sm text-muted-foreground"
+          transition:name={"date-" + slug}
+        >
+          {formatDate(guide.pubDate)}
+        </span>
       )
     }
   </div>

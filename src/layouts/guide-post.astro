@@ -1,6 +1,7 @@
 ---
-import { Badge } from "@/components/ui/badge";
+import { DashboardTableOfContents } from "@/components/toc";
 import { buttonVariants } from "@/components/ui/button";
+import { getTableOfContents } from "@/lib/toc";
 import { cn, formatDate } from "@/lib/utils";
 import { Icon } from "astro-icon";
 import type { CollectionEntry } from "astro:content";
@@ -8,41 +9,48 @@ import DocsLayout from "./docs-layout.astro";
 
 type Props = CollectionEntry<"guides">;
 
-const slug = Astro.props.slug;
-const { title, description, pubDate } =
-  Astro.props.data;
+const guide = Astro.props;
+const slug = guide.slug;
+const { title, description, pubDate } = guide.data;
+const toc = await getTableOfContents(guide.body);
 ---
 
 <DocsLayout title={title} description={description}>
-  <div class="relative container max-w-screen-md py-10">
-    <a
-      href="/guides"
-      class={cn(
-        buttonVariants({ variant: "ghost" }),
-        "absolute left-[-200px] top-10 hidden xl:inline-flex text-muted-foreground"
-      )}
-      transition:animate="slide"
-    >
-      <Icon name="lucide:chevron-left" class="mr-2 h-4 w-4" />
-      See all guides
-    </a>
-
+  <main
+    class="container max-w-5xl py-6 lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 lg:py-10 xl:gap-20"
+  >
     <article class="prose dark:prose-invert max-w-none">
-      
-      <div class="flex items-center justify-between">
-        <span
-          class="font-medium text-muted-foreground"
-          transition:name={"date-" + slug}
-        >
-          {formatDate(pubDate)}
-        </span>
-      </div>
+      <span
+        class="font-medium text-sm text-muted-foreground"
+        transition:name={"date-" + slug}
+      >
+        {formatDate(pubDate)}
+      </span>
       <h1 class="font-heading text-4xl my-4" transition:name={"title-" + slug}>
         {title}
       </h1>
-      <p>{description}</p>
+      <p class="text-muted-foreground" transition:name={"desc-" + slug}>
+        {description}
+      </p>
       <hr class="my-6" />
+
       <slot />
+
+      <hr class="flex md:hidden my-4" />
+      <div class="flex md:hidden justify-start py-6 lg:py-10">
+        <a href="/guides" class={cn(buttonVariants({ variant: "ghost" }))}>
+          <Icon name="lucide:chevron-left" class="mr-2 h-4 w-4" />
+           See all guides
+        </a>
+      </div>
     </article>
-  </div>
+    <div class="hidden text-sm lg:block">
+      <div
+        class="sticky top-18 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10"
+        transition:animate="slide"
+      >
+        <DashboardTableOfContents toc={toc} client:load />
+      </div>
+    </div>
+  </main>
 </DocsLayout>
