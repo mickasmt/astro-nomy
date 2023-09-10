@@ -3,6 +3,7 @@ import BlogHeader from "@/components/blog-header.astro";
 import BlogCard from "@/components/cards/blog-card.astro";
 import MainLayout from "@/layouts/main-layout.astro";
 import { getPostsByCategory } from "@/lib/fetchers";
+import { capitalizer } from "@/lib/utils";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -24,7 +25,7 @@ if (!category) {
 const posts = await getPostsByCategory(category);
 ---
 
-<MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
+<MainLayout title={`${capitalizer(category)} | Blog`} description={`All posts for ${category} category`}>
   <section class="container py-10">
     <BlogHeader title={`Posts by ${category} category`} />
 
