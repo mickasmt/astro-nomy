@@ -1,46 +1,35 @@
 ---
-import BaseHead from "@/components/layout/base-head.astro";
 import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
-import TailwindIndicator from "@/components/tailwind-indicator.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { marketingConfig } from "@/config/marketing";
 import { cn } from "@/lib/utils";
+import BaseLayout from "./base-layout.astro";
 
 type Props = {
   title: string;
   description: string;
-  className?: string;
+  mainClass?: string;
 };
 
-const { title, description, className } = Astro.props;
+const { title, description, mainClass } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-  </head>
-  <body class="flex flex-col min-h-screen">
-    <Header items={marketingConfig.mainNav}>
-      <div>
-        <a
-          href="/login"
-          class={cn(
-            buttonVariants({ variant: "secondary", size: "sm" }),
-            "px-4"
-          )}
-        >
-          Login
-        </a>
-      </div>
-    </Header>
+<BaseLayout title={title} description={description}>
+  <Header items={marketingConfig.mainNav}>
+    <div>
+      <a
+        href="/login"
+        class={cn(buttonVariants({ variant: "secondary", size: "sm" }), "px-4")}
+      >
+        Login
+      </a>
+    </div>
+  </Header>
 
-    <main class={cn(className)}>
-      <slot />
-    </main>
+  <main class={cn(mainClass)}>
+    <slot />
+  </main>
 
-    <Footer />
-    <TailwindIndicator />
-  </body>
-</html>
+  <Footer />
+</BaseLayout>
