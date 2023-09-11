@@ -1,20 +1,19 @@
 # Astronomy
 
-An open source application and starter template built using the latest features in Astro v3.
+An open source application built using the latest features in Astro v3 with shadcn/ui.
 
 ![blog](public/og.jpg)
 
 
 > **Warning**
-> This app is a work in progress. 
-> I'm building this in public. You can follow the progress on Twitter [@miickasmt](https://twitter.com/miickasmt).
+> This app is a work in progress. I'm building this in public. You can follow the progress on Twitter [@miickasmt](https://twitter.com/miickasmt).
 > See the roadmap below.
 
 ## About this project
 
 This project as an experiment to see how a modern app (with features like authentication, subscriptions, API routes, Markdown, Content Collections ...etc) would work in Astro 3.0 and shadcn/ui.
 
-> **Warning**
+> **Note**
 > I would like to inform you that for the time being, my example app built with Astro.js is still under development and **cannot yet be considered a starter template**.
 
 ## Project Structure
