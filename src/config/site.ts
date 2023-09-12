@@ -2,7 +2,7 @@ import type { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "Astronomy",
-  description: "An astro starter using shadcn/ui and like taxonomy template.",
+  description: "An modern example app built using Astro 3.0 & shadcn/ui. Inspired by shadcn/taxonomy.",
   url: "https://astro-nomy.vercel.app",
   ogImage: "https://astro-nomy.vercel.app/og.jpg",
   links: {

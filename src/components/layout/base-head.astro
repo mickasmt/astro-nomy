@@ -5,7 +5,7 @@ import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   image?: string;
 }
 
@@ -16,9 +16,6 @@ const {
   description = siteConfig.description,
   image = "/og.jpg",
 } = Astro.props;
-
-// const headTitle = title ? `${title} | ${siteConfig.name}` : title;
-// console.log(headTitle);
 ---
 
 <!-- Global Metadata -->
