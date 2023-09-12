@@ -20,6 +20,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  output: 'hybrid',
   adapter: vercel({
     analytics: true,
   }),
