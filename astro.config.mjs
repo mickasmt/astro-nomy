@@ -20,9 +20,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
-  output: 'static',
   adapter: vercel({
     analytics: true,
-    imageService: true,
   }),
 });
