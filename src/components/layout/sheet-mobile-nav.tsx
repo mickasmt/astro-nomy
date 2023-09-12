@@ -8,7 +8,7 @@ import { marketingConfig } from "@/config/marketing";
 import { siteConfig } from "@/config/site";
 import { Icons } from "@/icons";
 
-export function MobileNav() {
+export function SheetMobileNav() {
   const [open, setOpen] = React.useState(false);
 
   const mergedMainNav = [
@@ -24,8 +24,9 @@ export function MobileNav() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          variant="outline"
+          size="sm"
+          className="mr-2 px-1.5 md:hidden"
         >
           <Icons.hamburger className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
@@ -42,13 +43,13 @@ export function MobileNav() {
               {mergedMainNav.map(
                 (item) =>
                   item.href && (
-                    <a key={item.href} href={item.href}>
+                    <a key={item.href} href={item.href} className="text-muted-foreground">
                       {item.title}
                     </a>
                   )
               )}
             </div>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-2 pt-4">
               {docsConfig.sidebarNav.map((item, index) => (
                 <div key={index} className="flex flex-col space-y-3 pt-6">
                   <h4 className="font-medium">{item.title}</h4>

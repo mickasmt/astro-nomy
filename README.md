@@ -72,6 +72,7 @@ This project as an experiment to see how a modern app (with features like authen
 - [ ] Dropdown mobile nav
 - [ ] Build **auth pages**
 - [ ] Build **dashboard pages**
+- [ ] Add search support for blog
 - [ ] Add OG image for blog and others
 - [ ] Add SEO component & metadata 
 - [ ] Subscriptions using Stripe

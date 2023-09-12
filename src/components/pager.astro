@@ -47,7 +47,7 @@ if (!pager) {
     pager?.prev && (
       <a
         href={pager.prev.href}
-        class={cn(buttonVariants({ variant: "ghost" }))}
+        class={cn(buttonVariants({ variant: "outline" }))}
       >
         <Icon name="lucide:chevron-left" class="mr-2 h-4 w-4" />
 
@@ -59,10 +59,10 @@ if (!pager) {
     pager?.next && (
       <a
         href={pager.next.href}
-        class={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
+        class={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
       >
         {pager.next.title}
-        <Icon name="lucide:chevron-right" class="mr-2 h-4 w-4" />
+        <Icon name="lucide:chevron-right" class="ml-2 h-4 w-4" />
       </a>
     )
   }

@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 import { cn, extractSegmentURL } from "@/lib/utils";
 import type { MainNavItem } from "@/types";
 import { Icon } from "astro-icon";
-import { MobileNav } from "@/components/layout/mobile-nav.tsx";
+import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 
 type Props = {
   items: MainNavItem[];
@@ -42,5 +42,5 @@ const segment = extractSegmentURL(Astro.url.pathname);
     ) : null
   }
 
-  <MobileNav client:load />
+  <SheetMobileNav client:load />
 </div>

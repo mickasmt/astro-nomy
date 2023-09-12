@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import MainNav from "./main-nav.astro";
 
 import type { MainNavItem } from "@/types";
+import Icon from "astro-icon";
 
 type Props = {
   items: MainNavItem[];
@@ -18,8 +19,16 @@ const { items, className } = Astro.props;
     className
   )}
 >
-  <nav class="container flex items-center justify-between w-full">
+  <nav class="relative container flex items-center justify-between w-full">
     <MainNav items={items} />
+
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden"
+    >
+      <a href="/" aria-label="Astronomy homepage">
+        <Icon name="stars-outline" class="h-8 w-8" />
+      </a>
+    </div>
 
     <slot />
   </nav>
