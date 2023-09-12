@@ -20,7 +20,6 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
-  output: 'server',
   adapter: vercel({
     analytics: true,
   }),
