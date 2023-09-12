@@ -2,6 +2,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { getCategories } from "@/lib/fetchers";
 import { cn } from "@/lib/utils";
+import Icon from "astro-icon";
 
 const categories = await getCategories();
 
@@ -16,48 +17,50 @@ const { category } = Astro.params;
 <h1 class="inline-block font-heading text-4xl">{title}</h1>
 
 <div
-  class="flex max-md:flex-col items-start md:items-center justify-between my-6 max-md:gap-3"
+  class="flex items-start justify-between my-6 max-md:gap-4"
 >
-  <span
-    class="flex items-center w-full md:max-w-xs lg:max-w-sm h-10 rounded-md px-3 border text-muted-foreground"
-    >Search (coming soon)</span
-  >
+  <span class="flex items-center lg:w-full max-w-xs h-10 rounded-md px-2 lg:px-3 border text-muted-foreground">
+    <Icon name="ri:search-line" class="h-6 w-6" />
+    <span class="ml-2 hidden lg:flex">Search (coming soon)</span>
+  </span>
 
-  <ul class="flex items-center max-md:w-full space-x-2 lg:space-x-3">
-    <li>
-      <a
-        href={`/blog`}
-        class={cn(
-          !category ? "select-none" : "",
-          buttonVariants({
-            variant: !category ? "default" : "outline",
-            size: "sm",
-          })
-        )}
-      >
-        All posts
-      </a>
-    </li>
-    {
-      categories.map((item) => (
-        <li>
+  {
+    categories?.length ? (
+      <ul class="flex snap-x snap-mandatory overflow-auto items-center space-x-2 lg:space-x-2.5 pb-2">
+        <li class="flex-shrink-0 snap-start">
           <a
-            href={`/blog/category/${item}`}
+            href={`/blog`}
             class={cn(
-              "capitalize",
-              item === category ? "select-none" : "",
+              !category ? "select-none" : "",
               buttonVariants({
-                variant: item === category ? "default" : "outline",
-                size: "sm",
+                variant: !category ? "default" : "outline"
               })
             )}
           >
-            {item}
+            All posts
           </a>
         </li>
-      ))
-    }
-  </ul>
+        {categories.map((item) => (
+          <li class="flex-shrink-0 snap-start">
+            <a
+              href={`/blog/category/${item}`}
+              class={cn(
+                "capitalize",
+                item === category ? "select-none" : "",
+                buttonVariants({
+                  variant: item === category ? "default" : "outline"
+                })
+              )}
+            >
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div />
+    )
+  }
 </div>
 
-<hr class="mb-8" />
+<hr class="mb-7" />
