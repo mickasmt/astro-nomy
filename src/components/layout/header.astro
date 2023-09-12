@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import MainNav from "./main-nav.astro";
 
 import type { MainNavItem } from "@/types";
+import Logo from "../logo.astro";
 
 type Props = {
   items: MainNavItem[];
@@ -20,6 +21,8 @@ const { items, className } = Astro.props;
 >
   <nav class="container flex items-center justify-between w-full">
     <MainNav items={items} />
+
+    <Logo className="flex md:hidden" />
 
     <slot />
   </nav>

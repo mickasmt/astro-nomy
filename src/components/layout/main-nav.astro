@@ -1,5 +1,6 @@
 ---
-import { siteConfig } from "@/config/site";
+import Logo from "@/components/logo.astro";
+import { Button } from "@/components/ui/button";
 import { cn, extractSegmentURL } from "@/lib/utils";
 import type { MainNavItem } from "@/types";
 import { Icon } from "astro-icon";
@@ -12,14 +13,8 @@ const { items } = Astro.props;
 const segment = extractSegmentURL(Astro.url.pathname);
 ---
 
-<div class="flex items-center gap-6 md:gap-10">
-  <a href="/" class="flex items-center space-x-2">
-    <!-- Its loads the SVG in `/src/icons/stars-outline.svg` -->
-    <Icon name="stars-outline" class="h-8 w-8" />
-    <span class="hidden font-bold sm:inline-block">
-      {siteConfig.name}
-    </span>
-  </a>
+<div class="flex items-center gap-6 md:gap-8 lg:gap-10">
+  <Logo className="hidden md:flex" />
 
   {
     items?.length ? (
@@ -41,4 +36,8 @@ const segment = extractSegmentURL(Astro.url.pathname);
       </nav>
     ) : null
   }
+
+  <Button variant="secondary" size="sm" className="px-1.5 h-8 flex md:hidden">
+    <Icon name="two-lines" class="w-5 h-5" />
+  </Button>
 </div>
