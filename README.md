@@ -50,8 +50,8 @@ This project as an experiment to see how a modern app (with features like authen
 - Styled using **Tailwind CSS**
 - Validations using **Zod**
 - Written in **TypeScript**
-- Minimal styling (make it your own!)
 - 100/100 Lighthouse performance
+- Minimal styling (make it your own!)
 
 *Not implemented yet :*
 - RSS Feed support
@@ -68,6 +68,8 @@ This project as an experiment to see how a modern app (with features like authen
 
 - [x] ~Dark mode~
 - [x] ~Add Markdown & MDX support~
+- [x] ~Sheet mobile nav~
+- [ ] Dropdown mobile nav
 - [ ] Build **auth pages**
 - [ ] Build **dashboard pages**
 - [ ] Add OG image for blog and others

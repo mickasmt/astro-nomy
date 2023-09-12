@@ -1,9 +1,9 @@
 ---
-import Logo from "@/components/logo.astro";
-import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import { cn, extractSegmentURL } from "@/lib/utils";
 import type { MainNavItem } from "@/types";
 import { Icon } from "astro-icon";
+import { MobileNav } from "@/components/layout/mobile-nav.tsx";
 
 type Props = {
   items: MainNavItem[];
@@ -14,7 +14,12 @@ const segment = extractSegmentURL(Astro.url.pathname);
 ---
 
 <div class="flex items-center gap-6 md:gap-8 lg:gap-10">
-  <Logo className="hidden md:flex" />
+  <a href="/" class="hidden items-center space-x-2 md:flex">
+    <Icon name="stars-outline" class="h-8 w-8" />
+    <span class="hidden font-bold sm:inline-block">
+      {siteConfig.name}
+    </span>
+  </a>
 
   {
     items?.length ? (
@@ -37,7 +42,5 @@ const segment = extractSegmentURL(Astro.url.pathname);
     ) : null
   }
 
-  <Button variant="secondary" size="sm" className="px-1.5 h-8 flex md:hidden">
-    <Icon name="two-lines" class="w-5 h-5" />
-  </Button>
+  <MobileNav client:load />
 </div>
