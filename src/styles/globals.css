@@ -85,6 +85,11 @@
     @apply border-border;
   }
 
+  html {
+    /* scroll-padding-top: 4rem; */
+    @apply scroll-pt-16 lg:scroll-pt-0;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;

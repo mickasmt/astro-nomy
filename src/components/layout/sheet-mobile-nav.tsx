@@ -43,7 +43,12 @@ export function SheetMobileNav() {
               {mergedMainNav.map(
                 (item) =>
                   item.href && (
-                    <a key={item.href} href={item.href} className="text-muted-foreground">
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="text-muted-foreground"
+                      onClick={() => item.href.startsWith("/#") ? setOpen(false) : undefined}
+                    >
                       {item.title}
                     </a>
                   )
@@ -58,7 +63,10 @@ export function SheetMobileNav() {
                       <React.Fragment key={item.href + idx}>
                         {!item.disabled &&
                           (item.href ? (
-                            <a href={item.href} className="text-muted-foreground">
+                            <a
+                              href={item.href}
+                              className="text-muted-foreground"
+                            >
                               {item.title}
                             </a>
                           ) : (
