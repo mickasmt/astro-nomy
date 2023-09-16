@@ -5,6 +5,7 @@ import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import Icon from "astro-icon";
 import BaseLayout from "./base-layout.astro";
+import MainNav from "@/components/layout/main-nav.astro";
 
 type Props = {
   title: string;
@@ -15,8 +16,10 @@ const { title, description } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Header items={docsConfig.mainNav} className="border-b">
-    <nav>
+  <Header className="border-b">
+    <MainNav items={docsConfig.mainNav} slot="left-header" />
+
+    <nav slot="right-header">
       <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
         <Icon name="mdi:github" className="h-8 w-8" />
         <span class="sr-only">GitHub</span>

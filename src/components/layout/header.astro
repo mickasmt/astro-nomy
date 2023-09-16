@@ -1,16 +1,16 @@
 ---
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import MainNav from "./main-nav.astro";
 
 import type { MainNavItem } from "@/types";
 import Icon from "astro-icon";
+import { SheetMobileNav } from "./sheet-mobile-nav";
 
 type Props = {
-  items: MainNavItem[];
   className?: string;
 };
 
-const { items, className } = Astro.props;
+const { className } = Astro.props;
 ---
 
 <header
@@ -19,9 +19,23 @@ const { items, className } = Astro.props;
     className
   )}
 >
-  <nav class="relative container flex items-center justify-between w-full">
-    <MainNav items={items} />
+  <div class="relative container flex items-center justify-between w-full">
+    <div class="flex items-center gap-6 md:gap-8 lg:gap-10">
+      <a href="/" class="hidden items-center space-x-2 md:flex">
+        <Icon name="stars-outline" class="h-8 w-8" />
+        <span class="hidden font-bold sm:inline-block">
+          {siteConfig.name}
+        </span>
+      </a>
 
+      <SheetMobileNav client:load />
+
+      <div class="hidden md:flex">
+        <slot name="left-header" />
+      </div>
+    </div>
+
+    <!-- logo mobile center -->
     <div
       class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden"
     >
@@ -30,6 +44,6 @@ const { items, className } = Astro.props;
       </a>
     </div>
 
-    <slot />
-  </nav>
+    <slot name="right-header" />
+  </div>
 </header>

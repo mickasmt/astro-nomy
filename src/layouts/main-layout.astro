@@ -1,10 +1,10 @@
 ---
 import Footer from "@/components/layout/footer.astro";
-import Header from "@/components/layout/header.astro";
+import { MainNavigationMenu } from "@/components/main-navigation-menu";
 import { buttonVariants } from "@/components/ui/button";
-import { marketingConfig } from "@/config/marketing";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
+import Header from "@/components/layout/header.astro";
 
 type Props = {
   title: string;
@@ -16,8 +16,10 @@ const { title, description, mainClass } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Header items={marketingConfig.mainNav}>
-    <nav>
+  <Header>
+    <MainNavigationMenu slot="left-header" client:load />
+
+    <nav slot="right-header">
       <a
         href="/login"
         class={cn(buttonVariants({ variant: "secondary", size: "sm" }), "px-4")}
