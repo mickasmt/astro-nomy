@@ -28,21 +28,6 @@ export type SidebarNavItem = {
     }
 );
 
-export type NavMenuItem = {
-  title: string;
-  disabled?: boolean;
-  external?: boolean;
-} & (
-  | {
-      href: string;
-      items?: never;
-    }
-  | {
-      href?: string;
-      items: MenuItem[];
-    }
-);
-
 export type SiteConfig = {
   name: string;
   description: string;
@@ -64,8 +49,8 @@ export type MarketingConfig = {
 };
 
 export type NavMenuConfig = {
-  infosNav: NavMenuItem[];
-  examplesNav: NavMenuItem[];
+  infosNav: SidebarNavItem[];
+  examplesNav: SidebarNavItem[];
 };
 
 export type DashboardConfig = {

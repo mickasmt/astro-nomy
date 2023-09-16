@@ -5,6 +5,8 @@ import { MainNavigationMenu } from "@/components/main-navigation-menu";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
+import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
+import { navMenuConfig } from "@/config/nav-menu";
 // import { marketingConfig } from "@/config/marketing";
 // import MainNav from "@/components/layout/main-nav.astro";
 
@@ -19,8 +21,24 @@ const { title, description, mainClass } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <Header>
+    <!-- if using only normals links  -->
+    <!-- <MainNav items={marketingConfig.mainNav} slot="left-header" />
+    <SheetMobileNav
+      mainNavItems={marketingConfig.mainNav}
+      slot="mobile-nav-header"
+      client:load
+    /> -->
+
+    <!-- if use Navigation Menu on desktop -->
     <MainNavigationMenu slot="left-header" client:load />
-    <!-- <MainNav items={marketingConfig.mainNav} slot="left-header" /> -->
+    <SheetMobileNav
+      sidebarNavItems={[
+        ...navMenuConfig.infosNav,
+        ...navMenuConfig.examplesNav,
+      ]}
+      slot="mobile-nav-header"
+      client:load
+    />
 
     <nav slot="right-header">
       <a

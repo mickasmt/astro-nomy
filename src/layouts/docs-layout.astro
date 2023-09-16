@@ -5,7 +5,9 @@ import { MainNavigationMenu } from "@/components/main-navigation-menu";
 import { siteConfig } from "@/config/site";
 import Icon from "astro-icon";
 import BaseLayout from "./base-layout.astro";
-// import { docsConfig } from "@/config/docs";
+import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
+import { navMenuConfig } from "@/config/nav-menu";
+import { docsConfig } from "@/config/docs";
 // import MainNav from "@/components/layout/main-nav.astro";
 
 type Props = {
@@ -18,8 +20,26 @@ const { title, description } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <Header className="border-b">
+    <!-- if using only normals links  -->
+    <!-- <MainNav items={docsConfig.mainNav} slot="left-header" />
+    <SheetMobileNav
+      mainNavItems={[...docsConfig.mainNav]}
+      sidebarNavItems={[...docsConfig.sidebarNav]}
+      slot="mobile-nav-header"
+      client:load
+    /> -->
+
+    <!-- if use Navigation Menu on desktop -->
     <MainNavigationMenu slot="left-header" client:load />
-    <!-- <MainNav items={docsConfig.mainNav} slot="left-header" /> -->
+    <SheetMobileNav
+      sidebarNavItems={[
+        ...navMenuConfig.infosNav,
+        ...navMenuConfig.examplesNav,
+        ...docsConfig.sidebarNav
+      ]}
+      slot="mobile-nav-header"
+      client:load
+    />
 
     <nav slot="right-header">
       <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
