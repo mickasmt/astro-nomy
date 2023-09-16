@@ -12,15 +12,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Badge } from "@/components/ui/badge";
 import { navMenuConfig } from "@/config/nav-menu";
-
-type MenuItem = {
-  title: string;
-  href: string;
-  description: string;
-  launched?: boolean;
-  disabled?: boolean;
-  external?: boolean;
-};
+import type { MenuItem } from "@/types";
 
 const infos = navMenuConfig.infosNav[0];
 const examples = navMenuConfig.examplesNav[0];

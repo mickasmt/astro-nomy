@@ -6,7 +6,7 @@ export type NavItem = {
   disabled?: boolean;
 };
 export type MenuItem = NavItem & {
-  description: string;
+  description?: string;
   launched?: boolean;
   external?: boolean;
 };
@@ -24,7 +24,7 @@ export type SidebarNavItem = {
     }
   | {
       href?: string;
-      items: NavLink[];
+      items: MenuItem[];
     }
 );
 
