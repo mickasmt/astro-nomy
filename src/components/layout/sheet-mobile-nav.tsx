@@ -47,35 +47,48 @@ export function SheetMobileNav() {
                       key={item.href}
                       href={item.href}
                       className="text-muted-foreground"
-                      onClick={() => item.href.startsWith("/#") ? setOpen(false) : undefined}
+                      onClick={() =>
+                        item.href.startsWith("/#") ? setOpen(false) : undefined
+                      }
                     >
                       {item.title}
                     </a>
                   )
               )}
             </div>
+
             <div className="flex flex-col space-y-2 pt-4">
-              {docsConfig.sidebarNav.map((item, index) => (
-                <div key={index} className="flex flex-col space-y-3 pt-6">
-                  <h4 className="font-medium">{item.title}</h4>
-                  {item?.items?.length &&
-                    item.items.map((item, idx) => (
-                      <React.Fragment key={item.href + idx}>
-                        {!item.disabled &&
-                          (item.href ? (
-                            <a
-                              href={item.href}
-                              className="text-muted-foreground"
-                            >
-                              {item.title}
-                            </a>
-                          ) : (
-                            item.title
-                          ))}
+              {docsConfig.sidebarNav.map((item, index) => {
+                const activeItems = item?.items?.filter(
+                  (subItem) => !subItem.disabled
+                );
+
+                if (!activeItems || activeItems.length === 0) return null;
+
+                return (
+                  <div key={index} className="flex flex-col space-y-3 pt-6">
+                    {item.title === "Getting Started" ? (
+                      <h4 className="font-medium">Beginner's Guide</h4>
+                    ) : (
+                      <h4 className="font-medium">{item.title}</h4>
+                    )}
+                    {activeItems.map((subItem, idx) => (
+                      <React.Fragment key={subItem.href + idx}>
+                        {subItem.href ? (
+                          <a
+                            href={subItem.href}
+                            className="text-muted-foreground"
+                          >
+                            {subItem.title}
+                          </a>
+                        ) : (
+                          subItem.title
+                        )}
                       </React.Fragment>
                     ))}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </ScrollArea>
