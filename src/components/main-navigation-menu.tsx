@@ -16,49 +16,68 @@ type MenuItem = {
   title: string;
   href: string;
   description: string;
+  launched?: boolean;
   disabled?: boolean;
-  badge?: string;
+  external?: boolean;
 };
+
+const infos: MenuItem[] = [
+  {
+    title: "Features",
+    href: "/#features",
+    description: "Take a closer look at the project's features.",
+  },
+  {
+    title: "Twitter (@miickasmt)",
+    href: "https://twitter.com/miickasmt",
+    description: "Follow me to get the latest updates and news.",
+    external: true,
+  },
+  {
+    title: "Source Code",
+    href: "https://github.com/mickasmt/astro-nomy",
+    description: "You want to star the repository ? Let's get started!",
+    external: true,
+  },
+];
 
 const examples: MenuItem[] = [
   {
     title: "Blog",
     href: "/blog",
-    description:
-      "A Markdown/MDX blog built using Content Collections in Astro.",
+    description: "A Markdown/MDX blog built using Content Collections.",
   },
   {
     title: "Docs",
     href: "/docs/getting-started",
     description:
-      "A Markdown/MDX documentation site built using Contents Collections in Astro.",
+      "A Markdown/MDX documentation site built using Content Collections.",
+  },
+  {
+    title: "Authentification",
+    href: "/login",
+    description:
+      "Login and register pages for authentification.",
+    disabled: true,
+  },
+  {
+    title: "Dashboard",
+    href: "/#dashboard",
+    description: "A dashboard panel after authentification.",
+    disabled: true,
   },
   {
     title: "Ecommerce",
-    href: "/examples/ecommerce",
+    href: "/#examples/ecommerce",
     description:
       "Different pages of an ecommerce app fetching data from an API.",
     disabled: true,
-    badge: "SOON",
   },
   {
     title: "Social Media",
-    href: "/examples/social-media",
+    href: "/#examples/social-media",
     description: "Different components & pages of an social media app.",
     disabled: true,
-    badge: "SOON",
-  },
-  {
-    title: "Tabs",
-    href: "/",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
 ];
 
@@ -67,7 +86,7 @@ export function MainNavigationMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -84,15 +103,9 @@ export function MainNavigationMenu() {
                 </a>
               </li>
 
-              <ListItem href="/#features" title="Features">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
+              {infos.map((info) => (
+                <ListItem key={info.title} {...info} />
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -102,15 +115,7 @@ export function MainNavigationMenu() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {examples.map((example) => (
-                <ListItem
-                  key={example.title}
-                  title={example.title}
-                  // disabled={example?.disabled}
-                  // badge={example.badge}
-                  href={example.href}
-                >
-                  {example.description}
-                </ListItem>
+                <ListItem key={example.title} {...example} />
               ))}
             </ul>
           </NavigationMenuContent>
@@ -126,30 +131,46 @@ export function MainNavigationMenu() {
   );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const ListItem: React.FC<MenuItem> = ({
+  title,
+  href,
+  description,
+  launched,
+  disabled,
+  external
+}) => {
+  const target = external ? "_blank" : undefined;
+
   return (
     <li>
       <a
-        ref={ref}
+        href={disabled ? undefined : href}
+        target={target}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:hover:bg-transparent disabled:text-muted-foreground",
-          className
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          disabled
+            ? "text-muted-foreground hover:bg-transparent hover:text-muted-foreground"
+            : ""
         )}
-        // disabled={disabled}
-        {...props}
       >
         <div className="text-sm font-medium leading-none">
-          {title}
-          {/* {badge ? <Badge variant="outline" className="ml-2 text-sm h-5" radius="sm">{badge}</Badge> : ""} */}
+          <span className="mr-2">{title}</span>
+          {disabled ? (
+            <Badge variant="secondary" radius="sm" className="h-5 px-1.5 text-xs font-medium">
+              SOON
+            </Badge>
+          ) : null}
+          {launched ? (
+            <Badge radius="sm" className="h-5 px-1.5 text-xs font-medium">
+              NEW
+            </Badge>
+          ) : null}
         </div>
         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-          {children}
+          {description}
         </p>
       </a>
     </li>
   );
-});
+};
 ListItem.displayName = "ListItem";

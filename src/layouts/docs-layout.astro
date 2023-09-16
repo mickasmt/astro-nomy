@@ -1,11 +1,12 @@
 ---
 import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
-import { docsConfig } from "@/config/docs";
+import { MainNavigationMenu } from "@/components/main-navigation-menu";
 import { siteConfig } from "@/config/site";
 import Icon from "astro-icon";
 import BaseLayout from "./base-layout.astro";
-import MainNav from "@/components/layout/main-nav.astro";
+// import { docsConfig } from "@/config/docs";
+// import MainNav from "@/components/layout/main-nav.astro";
 
 type Props = {
   title: string;
@@ -17,7 +18,8 @@ const { title, description } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <Header className="border-b">
-    <MainNav items={docsConfig.mainNav} slot="left-header" />
+    <MainNavigationMenu slot="left-header" client:load />
+    <!-- <MainNav items={docsConfig.mainNav} slot="left-header" /> -->
 
     <nav slot="right-header">
       <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
