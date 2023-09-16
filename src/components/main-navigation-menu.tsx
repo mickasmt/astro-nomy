@@ -11,6 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Badge } from "@/components/ui/badge";
+import { navMenuConfig } from "@/config/nav-menu";
 
 type MenuItem = {
   title: string;
@@ -21,72 +22,15 @@ type MenuItem = {
   external?: boolean;
 };
 
-const infos: MenuItem[] = [
-  {
-    title: "Features",
-    href: "/#features",
-    description: "Take a closer look at the project's features.",
-  },
-  {
-    title: "Twitter (@miickasmt)",
-    href: "https://twitter.com/miickasmt",
-    description: "Follow me to get the latest updates and news.",
-    external: true,
-  },
-  {
-    title: "Source Code",
-    href: "https://github.com/mickasmt/astro-nomy",
-    description: "You want to star the repository ? Let's get started!",
-    external: true,
-  },
-];
-
-const examples: MenuItem[] = [
-  {
-    title: "Blog",
-    href: "/blog",
-    description: "A Markdown/MDX blog built using Content Collections.",
-  },
-  {
-    title: "Docs",
-    href: "/docs/getting-started",
-    description:
-      "A Markdown/MDX documentation site built using Content Collections.",
-  },
-  {
-    title: "Authentification",
-    href: "/login",
-    description:
-      "Login and register pages for authentification.",
-    disabled: true,
-  },
-  {
-    title: "Dashboard",
-    href: "/#dashboard",
-    description: "A dashboard panel after authentification.",
-    disabled: true,
-  },
-  {
-    title: "Ecommerce",
-    href: "/#examples/ecommerce",
-    description:
-      "Different pages of an ecommerce app fetching data from an API.",
-    disabled: true,
-  },
-  {
-    title: "Social Media",
-    href: "/#examples/social-media",
-    description: "Different components & pages of an social media app.",
-    disabled: true,
-  },
-];
+const infos = navMenuConfig.infosNav[0];
+const examples = navMenuConfig.examplesNav[0];
 
 export function MainNavigationMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+          <NavigationMenuTrigger>{infos.title}</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -103,7 +47,7 @@ export function MainNavigationMenu() {
                 </a>
               </li>
 
-              {infos.map((info) => (
+              {infos.items?.map((info) => (
                 <ListItem key={info.title} {...info} />
               ))}
             </ul>
@@ -111,10 +55,10 @@ export function MainNavigationMenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Examples</NavigationMenuTrigger>
+          <NavigationMenuTrigger>{examples.title}</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {examples.map((example) => (
+              {examples.items?.map((example) => (
                 <ListItem key={example.title} {...example} />
               ))}
             </ul>

@@ -7,6 +7,7 @@ import { docsConfig } from "@/config/docs";
 import { marketingConfig } from "@/config/marketing";
 import { siteConfig } from "@/config/site";
 import { Icons } from "@/icons";
+import { navMenuConfig } from "@/config/nav-menu";
 
 export function SheetMobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -19,6 +20,12 @@ export function SheetMobileNav() {
       index ===
       self.findIndex((t) => t.href === item.href && t.title === item.title)
   );
+
+  const mergedSidebarNav = [
+    ...navMenuConfig.infosNav,
+    ...navMenuConfig.examplesNav,
+    ...docsConfig.sidebarNav,
+  ];
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -58,7 +65,7 @@ export function SheetMobileNav() {
             </div>
 
             <div className="flex flex-col space-y-2 pt-4">
-              {docsConfig.sidebarNav.map((item, index) => {
+              {mergedSidebarNav.map((item, index) => {
                 const activeItems = item?.items?.filter(
                   (subItem) => !subItem.disabled
                 );
@@ -67,11 +74,7 @@ export function SheetMobileNav() {
 
                 return (
                   <div key={index} className="flex flex-col space-y-3 pt-6">
-                    {item.title === "Getting Started" ? (
-                      <h4 className="font-medium">Beginner's Guide</h4>
-                    ) : (
-                      <h4 className="font-medium">{item.title}</h4>
-                    )}
+                    <h4 className="font-medium">{item.title}</h4>
                     {activeItems.map((subItem, idx) => (
                       <React.Fragment key={subItem.href + idx}>
                         {subItem.href ? (
