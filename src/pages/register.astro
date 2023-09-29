@@ -1,4 +1,5 @@
 ---
+import UserAuthForm from "@/components/forms/user-auth-form.astro";
 import { buttonVariants } from "@/components/ui/button";
 import AuthLayout from "@/layouts/auth-layout.astro";
 import { cn } from "@/lib/utils";
@@ -21,8 +22,9 @@ import { cn } from "@/lib/utils";
         Enter your email below to create your account
       </p>
     </div>
-    <!-- <UserAuthForm /> -->
-     Form
+    
+    <UserAuthForm />
+    
     <p class="px-8 text-center text-sm text-muted-foreground">
       By clicking continue, you agree to our{" "}
       <a href="/terms" class="underline underline-offset-4 hover:text-primary">
