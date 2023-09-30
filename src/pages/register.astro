@@ -5,24 +5,24 @@ import AuthLayout from "@/layouts/auth-layout.astro";
 import { cn } from "@/lib/utils";
 ---
 
-<AuthLayout title="Login" description="Login">
+<AuthLayout title="Register" description="Register">
   <a
-    href="/register"
+    href="/login"
     slot="right-corner"
     class={cn(buttonVariants({ variant: "ghost" }))}
   >
-    Sign up
+    Login
   </a>
 
   
   <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-96">
     <div class="flex flex-col space-y-2 text-center">
-      <h1 class="text-2xl font-semibold tracking-tight">Welcome back !</h1>
+      <h1 class="text-2xl font-semibold tracking-tight">Create an account</h1>
       <p class="text-sm text-muted-foreground">
         Enter your email below to create your account
       </p>
     </div>
-
+    
     <UserAuthForm />
     
     <p class="px-8 text-center text-sm text-muted-foreground">
