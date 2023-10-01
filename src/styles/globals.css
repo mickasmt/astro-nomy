@@ -83,9 +83,6 @@
 
   * {
     @apply border-border;
-  }
-
-body {
   --sb-track-color: #ffffff;
   --sb-thumb-color: #e2e3f1;
   --sb-size: 10px;
@@ -94,16 +91,16 @@ body {
                    var(--sb-track-color);
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: var(--sb-size) 
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: var(--sb-track-color);
   border-radius: 10px;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 10px;
   
