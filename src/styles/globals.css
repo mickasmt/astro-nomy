@@ -142,3 +142,33 @@
   }
 
 }
+
+/* Scroll */
+
+::-webkit-scrollbar {
+  width: 4px; 
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border-radius: 6px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff48; 
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 4px; 
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #0f172a;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background: #ffffff48; 
+}
