@@ -32,10 +32,11 @@ const { title, description } = Astro.props;
     <!-- if use Navigation Menu on desktop -->
     <MainNavigationMenu slot="left-header" client:load />
     <SheetMobileNav
+      mainNavItems={[...navMenuConfig.links]}
       sidebarNavItems={[
         ...navMenuConfig.infosNav,
         ...navMenuConfig.examplesNav,
-        ...docsConfig.sidebarNav
+        ...docsConfig.sidebarNav,
       ]}
       slot="mobile-nav-header"
       client:load

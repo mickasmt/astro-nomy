@@ -71,7 +71,7 @@ export function SheetMobileNav({
             ) : null}
 
             {sidebarNavItems?.length ? (
-              <div className="flex flex-col space-y-2 pt-4">
+              <div className="flex flex-col space-y-2">
                 {sidebarNavItems.map((item, index) => {
                   const activeItems = item?.items?.filter(
                     (subItem) => !subItem.disabled

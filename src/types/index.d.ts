@@ -51,6 +51,7 @@ export type MarketingConfig = {
 export type NavMenuConfig = {
   infosNav: SidebarNavItem[];
   examplesNav: SidebarNavItem[];
+  links: MenuItem[];
 };
 
 export type DashboardConfig = {

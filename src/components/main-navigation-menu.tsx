@@ -58,9 +58,11 @@ export function MainNavigationMenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <a href="/about" className={navigationMenuTriggerStyle()}>
-            About
-          </a>
+          {navMenuConfig.links.map((link) => (
+            <a href={link.href} className={navigationMenuTriggerStyle()}>
+              {link.title}
+            </a>
+          ))}
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
