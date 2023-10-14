@@ -59,7 +59,7 @@ export function MainNavigationMenu() {
 
         <NavigationMenuItem>
           {navMenuConfig.links.map((link) => (
-            <a href={link.href} className={navigationMenuTriggerStyle()}>
+            <a key={link.href} href={link.href} className={navigationMenuTriggerStyle()}>
               {link.title}
             </a>
           ))}

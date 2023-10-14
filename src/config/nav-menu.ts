@@ -71,7 +71,7 @@ export const navMenuConfig: NavMenuConfig = {
   links: [
     {
       title: "FAQ",
-      href: "/#faq",
+      href: "/faq",
     },
     {
       title: "About",

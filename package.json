@@ -16,6 +16,7 @@
     "@astrojs/sitemap": "^3.0.1",
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vercel": "^5.0.2",
+    "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-scroll-area": "^1.0.5",
