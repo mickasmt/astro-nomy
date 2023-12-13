@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.1",
+    "@astrojs/mdx": "^2.0.1",
     "@astrojs/react": "^3.0.3",
-    "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.1",
-    "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/vercel": "^5.0.2",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/sitemap": "^3.0.3",
+    "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/vercel": "^6.0.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-navigation-menu": "^1.1.4",
@@ -24,8 +24,8 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.13",
-    "astro": "^3.2.4",
-    "astro-icon": "^0.8.1",
+    "astro": "^4.0.4",
+    "astro-icon": "^0.8.2",
     "balance-text": "^3.3.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -35,7 +35,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.6",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
