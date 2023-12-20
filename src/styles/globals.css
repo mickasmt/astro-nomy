@@ -140,5 +140,12 @@
   :not(pre) > code {
     @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm bg-background text-foreground;
   }
+}
 
+.text-gradient_indigo-purple {
+  background: linear-gradient(90deg, #6366f1 0%, rgb(168 85 247 / 0.9) 100%);
+  /* background: linear-gradient(83.21deg,#3245ff 0%,#bc52ee 100%); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

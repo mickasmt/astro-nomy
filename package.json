@@ -29,13 +29,13 @@
     "balance-text": "^3.3.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "date-fns": "^3.0.0",
+    "date-fns": "^3.0.1",
     "framer-motion": "^10.16.16",
-    "lucide-react": "^0.298.0",
+    "lucide-react": "^0.299.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.1.0",
-    "tailwindcss": "^3.3.6",
+    "tailwindcss": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

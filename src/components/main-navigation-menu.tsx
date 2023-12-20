@@ -30,7 +30,7 @@ export function MainNavigationMenu() {
                   className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                   href="/"
                 >
-                  <Icons.logo className="h-8 w-8" />
+                  <Icons.logo className="size-8" />
                   <div className="mb-2 mt-3 text-lg font-medium">Astronomy</div>
                   <p className="text-sm leading-tight text-muted-foreground">
                     Modern application with differents sections examples built

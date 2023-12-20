@@ -37,13 +37,13 @@ export function SheetMobileNav({
           size="sm"
           className="mr-2 h-8 px-1.5 md:hidden"
         >
-          <Icons.hamburger className="h-5 w-5" />
+          <Icons.hamburger className="size-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="pr-0">
         <a href="/" className="flex items-center">
-          <Icons.logo className="mr-2 h-8 w-8" />
+          <Icons.logo className="mr-2 size-8" />
           <span className="font-bold">{siteConfig.name}</span>
         </a>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-10">

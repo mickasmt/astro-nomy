@@ -10,7 +10,7 @@ An open source application built using the latest features in Astro v4 with shad
 
 ## About this project
 
-This project as an experiment to see how a modern app (with features like authentication, subscriptions, API routes, Markdown, Content Collections ...etc) would work in Astro 3.0 and shadcn/ui.
+This project as an experiment to see how a modern app (with features like authentication, subscriptions, API routes, Markdown, Content Collections ...etc) would work in Astro v4 and shadcn/ui.
 
 > **Note**
 > I would like to inform you that for the time being, my example app built with Astro.js is still under development and **cannot yet be considered a starter template**.
