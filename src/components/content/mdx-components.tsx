@@ -138,6 +138,7 @@ export const MdxComponents = {
         "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black p-4",
         className
       )}
+      tabIndex={0}
       {...props}
     />
   ),
