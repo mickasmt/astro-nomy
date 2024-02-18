@@ -39,14 +39,6 @@ const { title, description, mainClass } = Astro.props;
       client:load
     />
 
-    <nav slot="right-header">
-      <a
-        href="/login"
-        class={cn(buttonVariants({ variant: "outline", size: "sm" }), "px-4")}
-      >
-        Login
-      </a>
-    </nav>
   </Header>
 
   <main class={cn(mainClass)}>
