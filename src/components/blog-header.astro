@@ -2,7 +2,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import { getCategories } from "@/lib/fetchers";
 import { cn } from "@/lib/utils";
-import Icon from "astro-icon";
 
 const categories = await getCategories();
 
@@ -19,11 +18,6 @@ const { category } = Astro.params;
 <div
   class="flex items-start justify-between my-6 max-md:gap-4"
 >
-  <span class="flex items-center lg:w-full max-w-xs h-10 rounded-md px-2 lg:px-3 border text-muted-foreground">
-    <Icon name="ri:search-line" class="size-5" />
-    <span class="text-sm ml-2 hidden lg:flex">Search (coming soon)</span>
-  </span>
-
   {
     categories?.length ? (
       <ul class="flex snap-x snap-mandatory overflow-auto items-center space-x-2 lg:space-x-2.5 pb-2">
