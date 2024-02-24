@@ -1,7 +1,7 @@
 ---
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 type Props = {
@@ -19,8 +19,8 @@ const { className } = Astro.props;
       class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0"
     >
       <a href="/" aria-label="Astronomy homepage">
-        <Icon name="stars-outline" class="size-8" /></a
-      >
+        <Icon name="stars-outline" class="size-8" />
+      </a>
 
       <p class="text-center text-sm leading-loose md:text-left balance-text">
         Built by{" "}
@@ -32,7 +32,7 @@ const { className } = Astro.props;
         >
           mickasmt
         </a>
-         . Based on{" "}
+        . Based on{" "}
         <a
           href="https://github.com/shadcn-ui/taxonomy"
           target="_blank"
@@ -41,7 +41,7 @@ const { className } = Astro.props;
         >
           shadcn-ui/taxonomy
         </a>
-         . Hosted on{" "}
+        . Hosted on{" "}
         <a
           href="https://vercel.com"
           target="_blank"
@@ -50,7 +50,7 @@ const { className } = Astro.props;
         >
           Vercel
         </a>
-         . The source code is available on{" "}
+        . The source code is available on{" "}
         <a
           href={siteConfig.links.github}
           target="_blank"
@@ -59,7 +59,7 @@ const { className } = Astro.props;
         >
           GitHub
         </a>
-         .
+        .
       </p>
     </div>
 

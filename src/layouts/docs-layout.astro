@@ -3,7 +3,7 @@ import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
 import { MainNavigationMenu } from "@/components/main-navigation-menu";
 import { siteConfig } from "@/config/site";
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 import { navMenuConfig } from "@/config/nav-menu";
@@ -44,7 +44,7 @@ const { title, description } = Astro.props;
 
     <nav slot="right-header">
       <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
-        <Icon name="mdi:github" className="size-8" />
+        <Icon name="mdi:github" class="size-8" />
         <span class="sr-only">GitHub</span>
       </a>
     </nav>

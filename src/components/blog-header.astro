@@ -2,7 +2,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { getCategories } from "@/lib/fetchers";
 import { cn } from "@/lib/utils";
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const categories = await getCategories();
 
@@ -16,10 +16,10 @@ const { category } = Astro.params;
 
 <h1 class="inline-block font-heading text-4xl">{title}</h1>
 
-<div
-  class="flex items-start justify-between my-6 max-md:gap-4"
->
-  <span class="flex items-center lg:w-full max-w-xs h-10 rounded-md px-2 lg:px-3 border text-muted-foreground">
+<div class="flex items-start justify-between my-6 max-md:gap-4">
+  <span
+    class="flex items-center lg:w-full max-w-xs h-10 rounded-md px-2 lg:px-3 border text-muted-foreground"
+  >
     <Icon name="ri:search-line" class="size-5" />
     <span class="text-sm ml-2 hidden lg:flex">Search (coming soon)</span>
   </span>
@@ -33,7 +33,7 @@ const { category } = Astro.params;
             class={cn(
               !category ? "select-none" : "",
               buttonVariants({
-                variant: !category ? "default" : "outline"
+                variant: !category ? "default" : "outline",
               })
             )}
           >
@@ -48,7 +48,7 @@ const { category } = Astro.params;
                 "capitalize",
                 item === category ? "select-none" : "",
                 buttonVariants({
-                  variant: item === category ? "default" : "outline"
+                  variant: item === category ? "default" : "outline",
                 })
               )}
             >
