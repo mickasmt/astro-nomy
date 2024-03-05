@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 import { navMenuConfig } from "@/config/nav-menu";
+import {ThemeToggle} from "../components/theme-toggle";
 // import { marketingConfig } from "@/config/marketing";
 // import MainNav from "@/components/layout/main-nav.astro";
 
@@ -41,13 +42,19 @@ const { title, description, mainClass } = Astro.props;
       client:load
     />
 
+
     <nav slot="right-header">
-      <a
-        href="/login"
-        class={cn(buttonVariants({ variant: "outline", size: "sm" }), "px-4")}
+      <div class="inline-flex gap-8">
+
+          <ThemeToggle client:load/>
+
+        <a
+          href="/login"
+          class={cn(buttonVariants({variant: "outline", size: "sm"}), "px-5 pt-1 pb-1")}
       >
         Login
       </a>
+      </div>
     </nav>
   </Header>
 
