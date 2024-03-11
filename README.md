@@ -58,10 +58,7 @@ _Not implemented yet :_
 - Sitemap support
 - Data Fetching
 - SEO component
-- API Routes and Middlewares
-- Authentication using **Auth.js**
-- ORM using **Prisma**
-- Database on **PlanetScale**
+- API Endpoint
 - Subscriptions using **Stripe**
 
 ## Roadmap
@@ -70,7 +67,7 @@ _Not implemented yet :_
 - [x] ~Add Markdown & MDX support~
 - [x] ~Sheet mobile nav~
 - [ ] Dropdown mobile nav
-- [ ] Build **auth pages**
+- [ ] Build **ecommerce pages** (work on it)
 - [ ] Build **dashboard pages**
 - [ ] Add search support for blog
 - [ ] Add OG image for blog and others
