@@ -2,30 +2,34 @@
 import BlogHeader from "@/components/blog-header.astro";
 import BlogCard from "@/components/cards/blog-card.astro";
 import MainLayout from "@/layouts/main-layout.astro";
-import { getPostsByCategory } from "@/lib/fetchers";
 import { capitalizer } from "@/lib/utils";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { category: post.data.category },
-  }));
-}
+  const allPosts = await getCollection("blog");
+  const uniqueCategories = [
+    ...new Set(allPosts.map((post) => post.data.category).flat()),
+  ];
 
-const { category } = Astro.params;
-
-if (!category) {
-  return new Response(null, {
-    status: 404,
-    statusText: "Not found",
+  return uniqueCategories.map((category) => {
+    const filteredPosts = allPosts
+      .filter((post) => post.data.category.includes(category))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
   });
 }
 
-const posts = await getPostsByCategory(category);
+const { category } = Astro.params;
+const { posts } = Astro.props;
 ---
 
-<MainLayout title={`${capitalizer(category)} | Blog`} description={`All posts for ${category} category`}>
+<MainLayout
+  title={`${capitalizer(category)} | Blog`}
+  description={`All posts for ${category} category`}
+>
   <section class="container py-10">
     <BlogHeader title={`Posts by ${category} category`} />
 
