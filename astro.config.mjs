@@ -2,7 +2,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel/serverless";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 
@@ -22,6 +22,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  output: "hybrid",
   adapter: vercel({
     analytics: true,
   }),

@@ -37,8 +37,8 @@ const {
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{title ? `${title} | Astronomy` : "Astronomy"}</title>
+<meta name="title" content={title ? `${title} | Astronomy` : "Astronomy"} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->

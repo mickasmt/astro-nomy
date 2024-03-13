@@ -2,7 +2,6 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 type Props = {
   className?: string;
@@ -63,6 +62,5 @@ const { className } = Astro.props;
       </p>
     </div>
 
-    <ThemeToggle client:idle />
   </div>
 </footer>

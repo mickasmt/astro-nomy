@@ -3,24 +3,26 @@ import type { NavMenuConfig } from "@/types";
 export const navMenuConfig: NavMenuConfig = {
   infosNav: [
     {
-      title: "Menu",
+      title: "Pages",
       items: [
         {
-          title: "Features",
-          href: "/#features",
-          description: "Take a closer look at the project's features.",
+          title: "Landing",
+          href: "/landing",
+          description: "A landing page template with differents sections.",
+          image: "fake-img.jpg",
         },
         {
-          title: "Twitter (@miickasmt)",
-          href: "https://twitter.com/miickasmt",
-          description: "Follow me to get the latest updates and news.",
-          external: true,
+          title: "Changelog",
+          href: "/changelog",
+          description: "Replicate of Starlog template with Tailwind CSS.",
+          image: "fake-img.jpg",
         },
         {
-          title: "Source Code",
-          href: "https://github.com/mickasmt/astro-nomy",
-          description: "You want to star the repository ? Let's get started!",
-          external: true,
+          title: "Waiting List",
+          href: "waiting-list",
+          description: "A waiting list page with form using Astro DB.",
+          image: "fake-img.jpg",
+          disabled: true,
         },
       ],
     },
@@ -30,39 +32,45 @@ export const navMenuConfig: NavMenuConfig = {
       title: "Examples",
       items: [
         {
-          title: "Blog",
+          title: "Static Blog",
           href: "/blog",
           description: "A Markdown/MDX blog built using Content Collections.",
+          image: "fake-img.jpg",
         },
         {
           title: "Docs",
           href: "/docs/getting-started",
           description:
-            "A Markdown/MDX documentation site built using Content Collections.",
+            "A Markdown/MDX docs site built using Content Collections.",
+          image: "fake-img.jpg",
         },
         {
-          title: "Authentification",
-          href: "/login",
-          description: "Login and register pages for authentification.",
-          disabled: true,
-        },
-        {
-          title: "Dashboard",
-          href: "/#dashboard",
-          description: "A dashboard panel after authentification.",
+          title: "Blog DB",
+          href: "/#blog-db",
+          description:
+            "Blog built using Astro DB. With categories, views & likes.",
+          image: "fake-img.jpg",
           disabled: true,
         },
         {
           title: "Ecommerce",
-          href: "/#examples/ecommerce",
-          description:
-            "Different pages of an ecommerce app fetching data from an API.",
+          href: "/products",
+          disabled: true,
+          description: "Ecommerce pages fetching data from an API.",
+          image: "fake-img.jpg",
+        },
+        {
+          title: "Anime List",
+          href: "/#anime-list",
+          description: "Fetch anime content from an graphql endpoint",
+          image: "fake-img.jpg",
           disabled: true,
         },
         {
-          title: "Social Media",
-          href: "/#examples/social-media",
-          description: "Different components & pages of an social media app.",
+          title: "Authentification",
+          href: "/#authentification",
+          description: "Implement an authentification using Astro DB & Lucia",
+          image: "fake-img.jpg",
           disabled: true,
         },
       ],
@@ -70,12 +78,16 @@ export const navMenuConfig: NavMenuConfig = {
   ],
   links: [
     {
-      title: "FAQ",
-      href: "/faq",
+      title: "Pricing",
+      href: "/pricing",
+      description: "Pricing cards, FAQs and more.",
+      image: "fake-img.jpg",
     },
     {
       title: "About",
       href: "/about",
+      description: "Simple page",
+      image: "fake-img.jpg",
     },
   ],
 };

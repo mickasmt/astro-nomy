@@ -1,0 +1,66 @@
+---
+import type { MenuItem } from "@/types";
+
+type Props = {
+  title: string;
+  items: MenuItem[] | undefined;
+};
+
+const { title, items } = Astro.props;
+---
+
+<div id="" class="grid grid-cols-3 xl:grid-cols-4 py-8 gap-x-8 gap-y-6">
+  <h3 class="text-gray-900 font-semibold col-span-3 xl:col-span-1">{title}</h3>
+  <div
+    class="col-span-3 grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-y-8 lg:gap-x-8"
+  >
+    {
+      items &&
+        items.map((item) => (
+          <a
+            href={item.disabled ? "#" : item.href}
+            class="group relative bg-background rounded-lg shadow-sm overflow-hidden ring-1 ring-black ring-opacity-5"
+          >
+            <div class="relative bg-gray-100 pt-[50%] overflow-hidden">
+              <div class="absolute inset-0 w-full h-full rounded-t-lg overflow-hidden">
+                <img
+                  src="/images/examples/blog.svg"
+                  alt=""
+                  class="absolute inset-0 w-full h-full"
+                />
+              </div>
+            </div>
+            <div class="py-3 px-4">
+              <p class="text-sm font-medium text-foreground mb-1">
+                {item.title}
+              </p>
+              <p class="text-xs font-medium text-muted-foreground">
+                {item.description}
+              </p>
+              {item.disabled && (
+                <p class="absolute z-10 top-3 right-3 text-foreground bg-gray-900 bg-opacity-30 rounded-full flex items-center justify-center p-1">
+                  <span class="sr-only">
+                    PNG previews only, upgrade to get the HTML.
+                  </span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      d="M5.75 11.75a1 1 0 011-1h10.5a1 1 0 011 1v5.5a2 2 0 01-2 2h-8.5a2 2 0 01-2-2v-5.5zM7.75 10.5v-.157c0-1.562-.094-3.302.996-4.42C9.368 5.288 10.374 4.75 12 4.75c1.626 0 2.632.537 3.254 1.174 1.09 1.117.996 2.857.996 4.419v.157"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </p>
+              )}
+            </div>
+          </a>
+        ))
+    }
+  </div>
+</div>

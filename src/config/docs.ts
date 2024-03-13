@@ -1,4 +1,4 @@
-import type { DocsConfig } from "@/types"
+import type { DocsConfig } from "@/types";
 
 export const docsConfig: DocsConfig = {
   mainNav: [
@@ -29,108 +29,80 @@ export const docsConfig: DocsConfig = {
           href: "/docs/documentation",
         },
         {
-          title: "Contentlayer",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-        {
           title: "Components",
           href: "/docs/documentation/components",
         },
         {
-          title: "Code Blocks",
-          href: "/docs/documentation/code-blocks",
+          title: "Configuration  Astro DB",
+          href: "/docs/documentation/components",
+          disabled: true,
         },
         {
-          title: "Style Guide",
-          href: "/docs/documentation/style-guide",
-        },
-        {
-          title: "Search",
+          title: "Search (Fuse.js)",
           href: "/docs/in-progress",
           disabled: true,
         },
       ],
     },
     {
-      title: "Blog",
+      title: "Pages",
       items: [
         {
-          title: "Introduction",
+          title: "Landing",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "Build your own",
+          title: "Changelog",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "Writing Posts",
+          title: "Wait List",
           href: "/docs/in-progress",
           disabled: true,
         },
       ],
     },
     {
-      title: "Dashboard",
+      title: "Examples",
       items: [
+        // {
+        //   title: "Introduction",
+        //   href: "/docs/in-progress",
+        //   disabled: true,
+        // },
         {
-          title: "Introduction",
+          title: "Static Blog",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "Layouts",
+          title: "Docs & Guides",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "Server Components",
+          title: "Blog with Astro DB",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "Authentication",
+          title: "Ecommerce",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "Database with Prisma",
+          title: "Animes (GraphQL)",
           href: "/docs/in-progress",
           disabled: true,
         },
         {
-          title: "API Routes",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-      ],
-    },
-    {
-      title: "Marketing Site",
-      items: [
-        {
-          title: "Introduction",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-        {
-          title: "File Structure",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-        {
-          title: "Tailwind CSS",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-        {
-          title: "Typography",
+          title: "Authentification (Lucia)",
           href: "/docs/in-progress",
           disabled: true,
         },
       ],
     },
   ],
-}
+};

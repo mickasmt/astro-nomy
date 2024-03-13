@@ -1,11 +1,10 @@
 ---
-title: 'Preview Markdown'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 11 2022'
-coverImage: '/blog-placeholder-about.jpg'
-category: 'markdown'
+title: "Preview Markdown"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jul 11 2022"
+coverImage: "/images/blog/placeholder-about.jpg"
+category: "markdown"
 ---
-
 
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
 
@@ -63,7 +62,7 @@ Something a wise person once told me about typography is:
 It's probably important that images look okay here by default as well:
 
 <Image
-  src="/blog-placeholder-1.jpg"
+  src="/images/blog/placeholder-1.jpg"
   width="960"
   height="480"
   alt="Image"
@@ -119,7 +118,7 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-}
+};
 ```
 
 Hopefully that looks good enough to you.

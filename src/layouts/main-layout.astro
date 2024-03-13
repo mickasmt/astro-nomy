@@ -2,11 +2,13 @@
 import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
 import { MainNavigationMenu } from "@/components/main-navigation-menu";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 import { navMenuConfig } from "@/config/nav-menu";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { siteConfig } from "@/config/site";
+import { Icon } from "astro-icon/components";
 // import { marketingConfig } from "@/config/marketing";
 // import MainNav from "@/components/layout/main-nav.astro";
 
@@ -20,7 +22,7 @@ const { title, description, mainClass } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Header>
+  <Header className="border-b">
     <!-- if using only normals links  -->
     <!-- <MainNav items={marketingConfig.mainNav} slot="left-header" />
     <SheetMobileNav
@@ -41,14 +43,17 @@ const { title, description, mainClass } = Astro.props;
       client:load
     />
 
-    <nav slot="right-header">
+    <div class="flex items-center gap-x-3" slot="right-header">
       <a
-        href="/login"
-        class={cn(buttonVariants({ variant: "outline", size: "sm" }), "px-4")}
+        href={siteConfig.links.github}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="github"
       >
-        Login
+        <Icon name="github" class="mr-2 size-[22px]" />
       </a>
-    </nav>
+      <ThemeToggle client:load />
+    </div>
   </Header>
 
   <main class={cn(mainClass)}>

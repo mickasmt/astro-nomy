@@ -8,6 +8,7 @@ import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 import { navMenuConfig } from "@/config/nav-menu";
 import { docsConfig } from "@/config/docs";
+import { Button } from "@/components/ui/button";
 // import MainNav from "@/components/layout/main-nav.astro";
 
 type Props = {
@@ -42,12 +43,12 @@ const { title, description } = Astro.props;
       client:load
     />
 
-    <nav slot="right-header">
+    <div class="flex items-center gap-x-4" slot="right-header">
       <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
-        <Icon name="mdi:github" class="size-8" />
+        <Icon name="mdi:github" class="size-7" />
         <span class="sr-only">GitHub</span>
       </a>
-    </nav>
+    </div>
   </Header>
 
   <slot />
