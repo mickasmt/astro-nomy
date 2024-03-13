@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@/layouts/main-layout.astro';
+
+export async function getStaticPaths() {
+	const releases = await getCollection('releases');
+
+	return releases.map((release) => ({
+		params: { slug: release.slug },
+		props: { release },
+	}));
+}
+
+const { release } = Astro.props;
+
+const { Content } = await release.render();
+---
+
+<MainLayout title=''>
+	<Content />
+</MainLayout>

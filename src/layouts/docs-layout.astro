@@ -8,7 +8,7 @@ import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 import { navMenuConfig } from "@/config/nav-menu";
 import { docsConfig } from "@/config/docs";
-import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 // import MainNav from "@/components/layout/main-nav.astro";
 
 type Props = {
@@ -44,10 +44,23 @@ const { title, description } = Astro.props;
     />
 
     <div class="flex items-center gap-x-4" slot="right-header">
-      <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
-        <Icon name="mdi:github" class="size-7" />
-        <span class="sr-only">GitHub</span>
+      <div
+        class="flex items-center w-auto lg:w-60 h-10 rounded-md px-2 lg:px-3 border text-muted-foreground"
+      >
+        <Icon name="ri:search-line" class="size-5" />
+        <span class="text-sm ml-2 hidden lg:flex">Search (coming soon)</span>
+      </div>
+
+      <a
+        href={siteConfig.links.github}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="github"
+      >
+        <Icon name="github" class="size-[22px]" />
       </a>
+
+      <ThemeToggle client:load />
     </div>
   </Header>
 

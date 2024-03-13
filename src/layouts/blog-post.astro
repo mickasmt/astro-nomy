@@ -16,8 +16,8 @@ const { title, description, pubDate, updatedDate, coverImage, category } =
 
 <MainLayout title={title} description={description}>
   <div class="relative container max-w-screen-md py-10">
-    <a
-      href="/blog"
+    <button
+      onclick="history.back()"
       class={cn(
         buttonVariants({ variant: "ghost" }),
         "absolute left-[-200px] top-10 hidden xl:inline-flex text-muted-foreground"
@@ -25,16 +25,15 @@ const { title, description, pubDate, updatedDate, coverImage, category } =
       transition:animate="slide"
     >
       <Icon name="lucide:chevron-left" class="mr-2 size-4" />
-       See all posts
-    </a>
+      {" "}Back
+    </button>
 
     <article class="prose dark:prose-invert max-w-none">
-      <a href={`/blog/category/${category}`}>
-        <Badge
-          radius="md"
-          className="capitalize"
-          transition:name={"category-" + slug}
-        >
+      <a
+        href={`/blog/category/${category}`}
+        transition:name={"badge-cat-" + slug}
+      >
+        <Badge radius="md" className="capitalize">
           {category}
         </Badge>
       </a>

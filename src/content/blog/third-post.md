@@ -2,7 +2,7 @@
 title: "Third post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 15 2022"
-coverImage: "/images/blog/placeholder-2.jpg"
+coverImage: "../../assets/blog/placeholder-2.jpg"
 category: "design"
 ---
 
