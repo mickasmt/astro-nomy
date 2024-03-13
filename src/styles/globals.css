@@ -7,28 +7,30 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    --background-200: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --foreground: 0 0% 9%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 0 0% 9%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 0 0% 92%;
     --input: 214.3 31.8% 91.4%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card-foreground: 0 0% 9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 0 0% 9%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0, 0%, 0%, 0.08;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
@@ -39,32 +41,34 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 0 0% 4%;
+    --background-200: 0 170% 0%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --foreground: 0 0% 93%;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 80%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --accent: 0, 0%, 100%, .09;
+    --accent-foreground: 0 0% 93%;
 
-    --border: 216 34% 17%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 93%;
+
+    --border: 0 0% 12%;
     --input: 216 34% 17%;
 
     --card: 224 71% 4%;
     --card-foreground: 213 31% 91%;
 
-    --primary: 210 40% 98%;
+    --primary: 0 0% 93%;
     --primary-foreground: 222.2 47.4% 1.2%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 93%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 93%;
 
     --ring: 216 34% 17%;
 
@@ -128,22 +132,22 @@
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4;
   }
 
-  .callout > * {
+  .callout>* {
     @apply my-0 !important;
   }
-  
+
   .font-icon-callout {
     font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   }
 
   /* MdxComponent: For <code></code> with no parent <pre></pre> */
-  :not(pre) > code {
+  :not(pre)>code {
     @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm bg-background text-foreground;
   }
 }
 
 .text-gradient_indigo-purple {
-  background: linear-gradient(90deg, #6366f1 0%, rgb(168 85 247 / 0.9) 100%);
+  background: linear-gradient(90deg, #6366f1 0%, rgba(168 85 247 / 0.9) 100%);
   /* background: linear-gradient(83.21deg,#3245ff 0%,#bc52ee 100%); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

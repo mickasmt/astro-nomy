@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      padding: "1.25rem",
       screens: {
         "2xl": "1400px",
       },
@@ -18,16 +18,19 @@ module.exports = {
         heading: ["CalSans Semibold", ...fontFamily.sans],
       },
       height: {
-        "18": "4.5rem",
+        18: "4.5rem",
       },
       spacing: {
-        "18": "4.5rem",
+        18: "4.5rem",
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          200: "hsl(var(--background-200))",
+        },
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -46,7 +49,7 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "hsla(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {

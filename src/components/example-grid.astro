@@ -10,7 +10,7 @@ const { title, items } = Astro.props;
 ---
 
 <div id="" class="grid grid-cols-3 xl:grid-cols-4 py-8 gap-x-8 gap-y-6">
-  <h3 class="text-gray-900 font-semibold col-span-3 xl:col-span-1">{title}</h3>
+  <h3 class="text-foreground font-semibold col-span-3 xl:col-span-1">{title}</h3>
   <div
     class="col-span-3 grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-y-8 lg:gap-x-8"
   >
@@ -19,10 +19,10 @@ const { title, items } = Astro.props;
         items.map((item) => (
           <a
             href={item.disabled ? "#" : item.href}
-            class="group relative bg-background rounded-lg shadow-sm overflow-hidden ring-1 ring-black ring-opacity-5"
+            class="group relative bg-background rounded-xl overflow-hidden border"
           >
             <div class="relative bg-gray-100 pt-[50%] overflow-hidden">
-              <div class="absolute inset-0 w-full h-full rounded-t-lg overflow-hidden">
+              <div class="absolute inset-0 w-full h-full rounded-t-xl overflow-hidden">
                 <img
                   src="/images/examples/blog.svg"
                   alt=""

@@ -33,8 +33,10 @@ export function MainNavigationMenu() {
                   <Icons.logo className="size-8" />
                   <div className="mb-2 mt-3 text-lg font-medium">Astronomy</div>
                   <p className="text-sm leading-tight text-muted-foreground">
-                    Modern application with differents sections examples built
-                    using shadcn/ui.
+                    Pages and examples apps built with Astro v4.5,
+                    shadcn/ui & react js.
+                    <br />
+                    Open Source.
                   </p>
                 </a>
               </li>
@@ -59,7 +61,11 @@ export function MainNavigationMenu() {
 
         <NavigationMenuItem>
           {navMenuConfig.links.map((link) => (
-            <a key={link.href} href={link.href} className={navigationMenuTriggerStyle()}>
+            <a
+              key={link.href}
+              href={link.href}
+              className={navigationMenuTriggerStyle()}
+            >
               {link.title}
             </a>
           ))}
@@ -75,7 +81,7 @@ const ListItem: React.FC<MenuItem> = ({
   description,
   launched,
   disabled,
-  external
+  external,
 }) => {
   const target = external ? "_blank" : undefined;
 
@@ -94,7 +100,11 @@ const ListItem: React.FC<MenuItem> = ({
         <div className="text-sm font-medium leading-none">
           <span className="mr-2">{title}</span>
           {disabled ? (
-            <Badge variant="secondary" radius="sm" className="h-5 px-1.5 text-xs font-medium">
+            <Badge
+              variant="secondary"
+              radius="sm"
+              className="h-5 px-1.5 text-xs font-medium"
+            >
               SOON
             </Badge>
           ) : null}
