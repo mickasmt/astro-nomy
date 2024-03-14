@@ -23,7 +23,6 @@ export const Icons = {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 20 20"
-      focusable="false"
       aria-hidden="true"
       height="20px"
       width="20px"

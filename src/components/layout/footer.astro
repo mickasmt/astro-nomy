@@ -10,7 +10,7 @@ type Props = {
 const { className } = Astro.props;
 ---
 
-<footer class={cn(className)}>
+<footer class={cn(className, "border-t")}>
   <div
     class="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0"
   >
@@ -61,6 +61,5 @@ const { className } = Astro.props;
         .
       </p>
     </div>
-
   </div>
 </footer>
