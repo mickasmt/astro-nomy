@@ -25,7 +25,7 @@ const { title, items } = Astro.props;
       items &&
         items.map((item) => (
           <a
-            href={item.disabled ? null : item.href}
+            href={item.disabled ? "#" : item.href}
             class={cn(
               "group relative bg-background rounded-xl overflow-hidden card_border",
               item.disabled && "cursor-default"
