@@ -3,7 +3,6 @@ import { Icons } from "@/icons";
 import type { MenuItem } from "@/types";
 
 import { Image } from "astro:assets";
-import imgPlaceholder from "../assets/placeholder.webp";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -15,7 +14,7 @@ const { title, items } = Astro.props;
 ---
 
 <div id="" class="grid grid-cols-3 xl:grid-cols-4 py-8 gap-x-8 gap-y-6">
-  <h3 class="text-foreground font-semibold col-span-3 xl:col-span-1">
+  <h3 class="text-lg text-foreground font-semibold col-span-3 xl:col-span-1">
     {title}
   </h3>
   <div
@@ -27,33 +26,32 @@ const { title, items } = Astro.props;
           <a
             href={item.disabled ? "#" : item.href}
             class={cn(
-              "group relative bg-background rounded-xl overflow-hidden card_border",
+              "group bg-background rounded-xl overflow-hidden card_border",
               item.disabled && "cursor-default"
             )}
           >
-            <div class="relative bg-gray-100 pt-[60%] overflow-hidden">
-              <div class="absolute inset-0 w-full h-full rounded-t-xl overflow-hidden">
-                <Image
-                  loading="eager"
-                  src={imgPlaceholder}
-                  alt={item.title}
-                  class="absolute inset-0 w-full h-full"
-                />
-              </div>
-            </div>
-            <div class="py-3 px-4">
-              <p class="text-sm font-medium text-foreground mb-1">
-                {item.title}
-              </p>
-              <p class="text-xs font-medium text-muted-foreground">
-                {item.description}
-              </p>
+            <div class="relative aspect-[4/2]">
+              <Image
+                loading="eager"
+                width={740}
+                height={350}
+                src={
+                  item.image ? item.image : "/images/examples/placeholder.jpg"
+                }
+                alt="placeholder"
+                class="size-full object-cover object-top"
+              />
               {item.disabled && (
                 <p class="absolute z-10 top-3 right-3 text-foreground bg-gray-900 bg-opacity-35 rounded-full flex items-center justify-center p-1.5">
                   <span class="sr-only">Work on it actually!</span>
                   <Icons.wrenchSrewdriver className="size-6 text-white" />
                 </p>
               )}
+            </div>
+
+            <div class="py-3 px-4 border-t">
+              <p class="font-medium text-foreground mb-1.5">{item.title}</p>
+              <p class="text-sm text-muted-foreground/85">{item.description}</p>
             </div>
           </a>
         ))
