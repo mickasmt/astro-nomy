@@ -13,7 +13,7 @@ export const navMenuConfig: NavMenuConfig = {
         },
         {
           title: "Changelog",
-          href: "/changelog",
+          href: "/releases",
           description: "Replicate of Starlog template with Tailwind CSS.",
           image: "fake-img.jpg",
         },

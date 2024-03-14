@@ -2,7 +2,7 @@
 import { Icons } from "@/icons";
 import type { MenuItem } from "@/types";
 
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import imgPlaceholder from "../assets/placeholder.webp";
 
 type Props = {
@@ -30,6 +30,7 @@ const { title, items } = Astro.props;
             <div class="relative bg-gray-100 pt-[60%] overflow-hidden">
               <div class="absolute inset-0 w-full h-full rounded-t-xl overflow-hidden">
                 <Image
+                  loading="eager"
                   src={imgPlaceholder}
                   alt={item.title}
                   class="absolute inset-0 w-full h-full"

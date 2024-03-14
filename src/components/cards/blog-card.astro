@@ -15,21 +15,20 @@ const post = Astro.props;
     class="flex h-52 group-hover:-translate-y-2 group-hover:shadow-xl transition duration-300"
   >
     <Image
+      loading="eager"
       class="w-full h-full object-cover rounded-xl overflow-hidden"
-      width={400}
-      height={200}
       src={post.data.coverImage}
       alt="descriptive text"
-      transition:name={"img-" + post.slug}
+      transition:name={`img-${post.slug}`}
     />
   </a>
 
   <div class="flex items-center justify-between">
-    <a href={`/blog/category/${post.data.category}`} transition:name={"badge-cat-" + post.slug}>
-      <Badge
-        radius="md"
-        className="capitalize"
-      >
+    <a
+      href={`/blog/category/${post.data.category}`}
+      transition:name={"badge-cat-" + post.slug}
+    >
+      <Badge radius="md" className="capitalize">
         {post.data.category}
       </Badge>
     </a>

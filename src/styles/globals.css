@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,7 +24,7 @@
     --card-foreground: 0 0% 9%;
 
     --primary: 0 0% 9%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 92%;
     --secondary-foreground: 0 0% 9%;
@@ -123,10 +123,6 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  .balance-text {
-    text-wrap: balance;
-  }
-
   /* Documentation part */
   .docs-grid-cols-2 {
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4;
@@ -152,4 +148,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.bg_release_version {
+  background: linear-gradient(25deg,
+      #3a084e,
+      #5b0e81,
+      #bc4c9b,
+      #df7f4f) !important;
 }

@@ -51,24 +51,26 @@ This project as an experiment to see how a modern app (with features like authen
 - Written in **TypeScript**
 - 100/100 Lighthouse performance
 - Minimal styling (make it your own!)
+- RSS Feed support
 
 _Not implemented yet :_
 
-- RSS Feed support
 - Sitemap support
 - Data Fetching
 - SEO component
 - API Endpoint
-- Subscriptions using **Stripe**
+- Subscriptions using **Lemon Squeezy** ?
 
 ## Roadmap
 
 - [x] ~Dark mode~
 - [x] ~Add Markdown & MDX support~
 - [x] ~Sheet mobile nav~
-- [ ] Dropdown mobile nav
+- [x] ~Build **changelog pages**~
+- [ ] Build **blog with Asto DB** (work on it)
 - [ ] Build **ecommerce pages** (work on it)
 - [ ] Build **dashboard pages**
+- [ ] Build **animes pages** (graphql)
 - [ ] Add search support for blog
 - [ ] Add OG image for blog and others
 - [ ] Add SEO component & metadata
