@@ -4,6 +4,7 @@ import type { MenuItem } from "@/types";
 
 import { Image } from "astro:assets";
 import imgPlaceholder from "../assets/placeholder.webp";
+import { cn } from "@/lib/utils";
 
 type Props = {
   title: string;
@@ -24,8 +25,11 @@ const { title, items } = Astro.props;
       items &&
         items.map((item) => (
           <a
-            href={item.disabled ? "/#" : item.href}
-            class="group relative bg-background rounded-xl overflow-hidden border"
+            href={item.disabled ? null : item.href}
+            class={cn(
+              "group relative bg-background rounded-xl overflow-hidden card_border",
+              item.disabled && "cursor-default"
+            )}
           >
             <div class="relative bg-gray-100 pt-[60%] overflow-hidden">
               <div class="absolute inset-0 w-full h-full rounded-t-xl overflow-hidden">

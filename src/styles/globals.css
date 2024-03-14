@@ -38,6 +38,7 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+    --ds-shadow-border: 0 0 0 1px rgba(0, 0, 0, .08);
   }
 
   .dark {
@@ -73,6 +74,7 @@
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+    --ds-shadow-border: 0 0 0 1px hsla(0, 0%, 100%, .145);
   }
 }
 
@@ -156,4 +158,18 @@
       #5b0e81,
       #bc4c9b,
       #df7f4f) !important;
+}
+
+/* Vercel card style */
+.card_border {
+  box-shadow: var(--ds-shadow-border), 0 4px 6px rgba(0, 0, 0, .04);
+  transition: box-shadow .15s ease;
+}
+
+.card_border:hover {
+  box-shadow: var(--ds-shadow-border), 0 6px 14px rgba(0, 0, 0, .08);
+}
+
+.dark .card_border:hover {
+  box-shadow: 0 0 0 1px white;
 }
