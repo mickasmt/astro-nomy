@@ -17,7 +17,9 @@ const post = Astro.props;
     <Image
       loading="eager"
       class="w-full h-full object-cover rounded-xl overflow-hidden"
-      src={post.data.coverImage}
+      width={720}
+      height={360}
+      src={post.data.cover}
       alt="descriptive text"
       transition:name={`img-${post.slug}`}
     />
