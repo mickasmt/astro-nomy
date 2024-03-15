@@ -1,0 +1,25 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+---
+
+<MainLayout
+  title="Waitlist"
+  description="A waiting list page with form using Astro DB."
+  mainClass="bg-background-200"
+>
+  <div class="relative flex w-full min-h-svh items-center justify-center">
+    <div
+      class="px-4 py-5 sm:p-6 bg-background border rounded-xl overflow-hidden -mt-36"
+    >
+      <div class="w-full max-w-sm space-y-6">
+        <div class="space-y-3">
+          <h1 class="text-xl font-heading font-medium">Get early access!</h1>
+          <p class="text-[15px] text-muted-foreground">
+            Excited to join the waitlist? Fill out the form below to secure your
+            spot and be the first to know when we launch!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

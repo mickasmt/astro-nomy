@@ -18,11 +18,10 @@ export const navMenuConfig: NavMenuConfig = {
           image: "/images/examples/changelog.jpg",
         },
         {
-          title: "Waiting List",
-          href: "/waiting-list",
+          title: "Waitlist",
+          href: "/waitlist",
           description: "A waiting list page with form using Astro DB.",
           // image: "/images/examples/waiting-list.jpg",
-          disabled: true,
         },
       ],
     },
