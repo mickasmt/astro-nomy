@@ -1,5 +1,7 @@
 ---
 import MainLayout from "@/layouts/main-layout.astro";
+import { WaitlistForm } from "@/components/forms/waitlist-form";
+import { Icon } from "astro-icon/components";
 ---
 
 <MainLayout
@@ -11,14 +13,17 @@ import MainLayout from "@/layouts/main-layout.astro";
     <div
       class="px-4 py-5 sm:p-6 bg-background border rounded-xl overflow-hidden -mt-36"
     >
-      <div class="w-full max-w-sm space-y-6">
+      <div class="flex flex-col gap-y-6 w-full max-w-sm">
         <div class="space-y-3">
-          <h1 class="text-xl font-heading font-medium">Get early access!</h1>
-          <p class="text-[15px] text-muted-foreground">
+          <Icon name="stars-outline" class="size-10" />
+          <h1 class="text-2xl font-heading tracking-wide">Get early access!</h1>
+          <p class="text-sm text-muted-foreground">
             Excited to join the waitlist? Fill out the form below to secure your
             spot and be the first to know when we launch!
           </p>
         </div>
+
+        <WaitlistForm client:load />
       </div>
     </div>
   </div>

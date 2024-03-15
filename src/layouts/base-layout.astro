@@ -1,6 +1,7 @@
 ---
 import BaseHead from "@/components/layout/base-head.astro";
 import TailwindIndicator from "@/components/tailwind-indicator.astro";
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -20,5 +21,6 @@ const { title, description, bodyClass } = Astro.props;
   <body class={cn("flex flex-col min-h-screen", bodyClass)}>
     <slot />
     <TailwindIndicator />
+    <Toaster client:load />
   </body>
 </html>

@@ -20,8 +20,9 @@ export const navMenuConfig: NavMenuConfig = {
         {
           title: "Waitlist",
           href: "/waitlist",
-          description: "A waiting list page with form using Astro DB.",
-          // image: "/images/examples/waiting-list.jpg",
+          description:
+            "A waiting list page with form using Astro DB, React Hook Form & Sonner.",
+          image: "/images/examples/waitlist.jpg",
         },
       ],
     },
