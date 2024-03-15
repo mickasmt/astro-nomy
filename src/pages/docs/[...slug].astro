@@ -4,6 +4,7 @@ import DocsSidebarNav from "@/components/layout/sidebar-nav.astro";
 import DocsPageHeader from "@/components/page-header.astro";
 import DocsPager from "@/components/pager.astro";
 import { DashboardTableOfContents } from "@/components/toc";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { docsConfig } from "@/config/docs";
 import DocsLayout from "@/layouts/docs-layout.astro";
 import { getTableOfContents } from "@/lib/toc";
@@ -39,12 +40,14 @@ if (!slug || !doc) {
       class="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10"
     >
       <aside
-        class="fixed top-18 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r py-6 pr-2 md:sticky md:block lg:py-8"
+        class="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:block"
       >
-        <DocsSidebarNav items={docsConfig.sidebarNav} />
+        <ScrollArea className="h-full py-6 pr-6 lg:py-8" client:load>
+          <DocsSidebarNav items={docsConfig.sidebarNav} />
+        </ScrollArea>
       </aside>
       <main
-        class="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]"
+        class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
         <div class="mx-auto w-full min-w-0">
           <DocsPageHeader

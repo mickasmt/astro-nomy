@@ -173,3 +173,14 @@
 .dark .card_border:hover {
   box-shadow: 0 0 0 1px white;
 }
+
+/* Custom scrollbar  */
+[data-radix-scroll-area-viewport] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-radix-scroll-area-viewport]::-webkit-scrollbar {
+  display: none
+}
