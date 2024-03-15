@@ -23,6 +23,7 @@ export const navMenuConfig: NavMenuConfig = {
           description:
             "A waiting list page with form using Astro DB, React Hook Form & Sonner.",
           image: "/images/examples/waitlist.jpg",
+          forceReload: true,
         },
       ],
     },
@@ -87,6 +88,7 @@ export const navMenuConfig: NavMenuConfig = {
       title: "About",
       href: "/about",
       description: "Simple page",
+      forceReload: true,
       // image: "/images/examples/about.jpg",
     },
   ],

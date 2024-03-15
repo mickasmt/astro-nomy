@@ -65,6 +65,7 @@ export function MainNavigationMenu() {
               key={link.href}
               href={link.href}
               className={navigationMenuTriggerStyle()}
+              {...(link.forceReload ? { "data-astro-reload": true } : {})}
             >
               {link.title}
             </a>
@@ -82,14 +83,16 @@ const ListItem: React.FC<MenuItem> = ({
   launched,
   disabled,
   external,
+  forceReload,
 }) => {
   const target = external ? "_blank" : undefined;
 
   return (
     <li>
       <a
-        href={disabled ? undefined : href}
         target={target}
+        href={disabled ? undefined : href}
+        {...(forceReload ? { "data-astro-reload": true } : {})}
         className={cn(
           "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
           disabled

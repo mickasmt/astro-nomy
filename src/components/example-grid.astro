@@ -24,11 +24,12 @@ const { title, items } = Astro.props;
       items &&
         items.map((item) => (
           <a
-            href={item.disabled ? "#" : item.href}
+            href={item.disabled ? undefined : item.href}
             class={cn(
               "group bg-background rounded-xl overflow-hidden card_border",
               item.disabled && "cursor-default"
             )}
+            {...(item.forceReload ? { "data-astro-reload": true } : {})}
           >
             <div class="relative aspect-[4/2]">
               <Image

@@ -10,6 +10,7 @@ export type MenuItem = NavItem & {
   description?: string;
   launched?: boolean;
   external?: boolean;
+  forceReload?: boolean;
 };
 
 export type MainNavItem = NavItem;
