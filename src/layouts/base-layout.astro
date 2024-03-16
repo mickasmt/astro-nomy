@@ -22,6 +22,6 @@ const { title, description, bodyClass } = Astro.props;
   <body class={cn("flex flex-col min-h-screen", bodyClass)}>
     <slot />
     <TailwindIndicator />
-    <Toaster richColors client:load />
+    <Toaster richColors client:only="react" />
   </body>
 </html>

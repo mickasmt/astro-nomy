@@ -53,7 +53,8 @@ export function WaitlistForm() {
                   <Input placeholder="jonhdoe@example.com" {...field} />
                 </FormControl>
                 <FormDescription className="text-[13px]">
-                  Your email is save with Astro DB.
+                  {/* Your email is save with Astro DB. */}
+                  Astro DB will be connected soon. Testing the sonner component now.
                 </FormDescription>
                 <FormMessage />
               </FormItem>

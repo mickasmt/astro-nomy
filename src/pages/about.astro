@@ -2,8 +2,8 @@
 import MainLayout from "@/layouts/main-layout.astro";
 import { Image } from "astro:assets";
 import { hobbies } from "@/config/about.ts";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Icon } from "astro-icon/components";
 ---
 
 <MainLayout title="About" description="Lorem ipsum dolor sit amet">
@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
         <div class="grid gap-8 sm:grid-cols-2">
           <div>
             <h1 class="text-4xl font-heading text-foreground">mickasmt</h1>
-            <p class="text-base text-muted-foreground mt-1">
+            <p class="text-base text-muted-foreground mt-0.5">
               Fullstack Developer
             </p>
           </div>
@@ -26,19 +26,16 @@ import { cn } from "@/lib/utils";
               <br />
               What's up with you?
             </p>
-            <div
-              class="flex items-center gap-4 divide-x divide-zinc-200 dark:divide-zinc-800"
-            >
-              <a
-                href="/"
-                class={cn(
-                  buttonVariants({
-                    variant: "outline",
-                  })
-                )}
-              >
-                github
-              </a>
+            <div class="flex items-center gap-3">
+              <Button className="rounded-xl">
+                <Icon name="lucide:mail" class="mr-2 size-4" />
+                <a href="mailto:">Talk with me</a>
+              </Button>
+
+              <Button variant="outline" className="rounded-xl">
+                <Icon name="lucide:briefcase" class="mr-2.5 size-4" />
+                <a href="https://mickasmt.com/" target="_blank">My works</a>
+              </Button>
             </div>
           </div>
         </div>
@@ -46,7 +43,7 @@ import { cn } from "@/lib/utils";
     </section>
 
     <div
-      class="relative z-10 flex flex-col justify-center overflow-hidden lg:overflow-visible"
+      class="relative z-10 flex flex-col justify-center overflow-hidden lg:overflow-visible pb-16"
     >
       <div
         class="mx-auto flex w-max -translate-x-[15%] justify-center lg:w-full lg:translate-x-0"

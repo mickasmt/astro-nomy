@@ -18,7 +18,7 @@
     --popover-foreground: 0 0% 9%;
 
     --border: 0 0% 92%;
-    --input: 214.3 31.8% 91.4%;
+    --input: 0 0% 92%;
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 9%;
@@ -57,10 +57,10 @@
     --popover-foreground: 0 0% 93%;
 
     --border: 0 0% 12%;
-    --input: 216 34% 17%;
+    --input: 0 0% 12%;
 
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 93%;
 
     --primary: 0 0% 93%;
     --primary-foreground: 222.2 47.4% 1.2%;
@@ -71,7 +71,7 @@
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 93%;
 
-    --ring: 216 34% 17%;
+    --ring: 0 0% 12%;
 
     --radius: 0.5rem;
     --ds-shadow-border: 0 0 0 1px hsla(0, 0%, 100%, .145);

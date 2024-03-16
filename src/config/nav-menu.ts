@@ -88,8 +88,7 @@ export const navMenuConfig: NavMenuConfig = {
       title: "About",
       href: "/about",
       description: "Simple page",
-      forceReload: true,
-      // image: "/images/examples/about.jpg",
+      image: "/images/examples/about.jpg",
     },
   ],
 };
