@@ -67,7 +67,8 @@ _Not implemented yet :_
 - [x] ~Add Markdown & MDX support~
 - [x] ~Sheet mobile nav~
 - [x] ~Build **changelog pages**~
-- [ ] Build **blog with Asto DB** (work on it)
+- [x] ~Build **waitlist with Astro DB**~
+- [ ] Build **blog with Astro DB** (work on it)
 - [ ] Build **ecommerce pages** (work on it)
 - [ ] Build **dashboard pages**
 - [ ] Build **animes pages** (graphql)

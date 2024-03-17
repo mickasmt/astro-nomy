@@ -12,11 +12,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string().email({
-    message: "Email not valid.",
+    message: "Email is not valid.",
   }),
 });
 
@@ -28,44 +28,58 @@ export function WaitlistForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast.success("Thanks for your support!", {
-      description: (
-        <span>
-          We're added <b>{values.email}</b> to the waitlist!
-        </span>
-      ),
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const response = await fetch("/api/waitlist", {
+      method: "POST",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
     });
-    form.reset();
+    const data = await response.json();
+
+    if (data.message === "success") {
+      toast.success("Thanks for your support!", {
+        description: (
+          <span>
+            We're added <b>{values.email}</b> to the waitlist!
+          </span>
+        ),
+      });
+      form.reset();
+    } else {
+      toast.error("Something wrong!", {
+        description: "Please try again!",
+      });
+    }
   }
 
   return (
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="jonhdoe@example.com" {...field} />
-                </FormControl>
-                <FormDescription className="text-[13px]">
-                  {/* Your email is save with Astro DB. */}
-                  Astro DB will be connected soon. Testing the sonner component now.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button className="w-full" type="submit">
-            Submit
-          </Button>
-      {/* <Toaster richColors /> */}
-        </form>
-      </Form>
-    </>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="jonhdoe@example.com" {...field} />
+              </FormControl>
+              <FormDescription className="text-[13px]">
+                Unique email please. Errors with duplicates!
+                <br />
+                <i>Save in Astro DB. Demo emails only, not for use!</i>
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button className="w-full" type="submit">
+          Submit
+        </Button>
+      </form>
+    </Form>
   );
 }

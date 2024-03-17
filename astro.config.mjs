@@ -1,3 +1,4 @@
+import db from "@astrojs/db";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -12,7 +13,9 @@ export default defineConfig({
   integrations: [
     mdx({
       syntaxHighlight: "shiki",
-      shikiConfig: { theme: "github-dark-dimmed" },
+      shikiConfig: {
+        theme: "github-dark-dimmed",
+      },
       gfm: true,
     }),
     icon(),
@@ -21,6 +24,7 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    db(),
   ],
   output: "hybrid",
   adapter: vercel({

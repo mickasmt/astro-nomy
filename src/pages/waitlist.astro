@@ -1,7 +1,22 @@
 ---
+export const prerender = false;
+
 import MainLayout from "@/layouts/main-layout.astro";
 import { WaitlistForm } from "@/components/forms/waitlist-form";
 import { Icon } from "astro-icon/components";
+import { db, WaitingList, sql } from "astro:db";
+
+const waiting = await db
+  .select({ count: sql<number>`count(*)`.mapWith(Number) })
+  .from(WaitingList);
+const count = waiting[0].count;
+
+// With Fetch API:
+// const response = await fetch(Astro.url.origin + "/api/waitlist");
+// const { count } = await response.json();
+
+// NOTE: the counter not change after submit because the form use reactjs
+// If you want that the increment counter: use html form like this => https://docs.astro.build/en/guides/astro-db/#insert
 ---
 
 <MainLayout
@@ -18,8 +33,10 @@ import { Icon } from "astro-icon/components";
           <Icon name="stars-outline" class="size-10" />
           <h1 class="text-2xl font-heading tracking-wide">Get early access!</h1>
           <p class="text-sm text-muted-foreground">
-            Excited to join the waitlist? Fill out the form below to secure your
-            spot and be the first to know when we launch!
+            <b>{count} people</b> already joined the waitlist!
+            <br />
+            Fill out the form below to secure your spot and be the first to know
+            when we launch!
           </p>
         </div>
 
