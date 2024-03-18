@@ -1,11 +1,15 @@
 ---
 export const prerender = false;
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import MainLayout from "@/layouts/main-layout.astro";
+import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
 import { WaitingList, db, sql } from "astro:db";
 import { createForm } from "simple:form";
 import z from "zod";
+let error: boolean = false;
 
 const newsletterForm = createForm({
   email: z.string().email(),
@@ -14,7 +18,6 @@ const newsletterForm = createForm({
 const res = await Astro.locals.form.getData(newsletterForm);
 
 if (res?.data) {
-  // add try catch
   const response = await fetch(Astro.url.origin + "/api/waitlist", {
     method: "POST",
     headers: {
@@ -27,6 +30,8 @@ if (res?.data) {
 
   if (data.message === "success") {
     Astro.cookies.set("sub-newsletter", "true");
+  } else {
+    error = true;
   }
 }
 
@@ -42,6 +47,8 @@ const waiting = await db
   .select({ count: sql<number>`count(*)`.mapWith(Number) })
   .from(WaitingList);
 const count = waiting[0].count;
+
+console.log(newsletterForm.inputProps.email);
 
 // With Fetch API:
 // const response = await fetch(Astro.url.origin + "/api/waitlist");
@@ -59,7 +66,7 @@ const count = waiting[0].count;
     >
       <div class="flex flex-col gap-y-5 w-full max-w-sm">
         <div class="space-y-3">
-          <Icon name="stars-outline" class="size-10" />
+          <Icon name="lucide:mail" class="size-10" />
           <h1 class="text-2xl font-heading tracking-wide">
             Subscribe to the newsletter
           </h1>
@@ -68,20 +75,59 @@ const count = waiting[0].count;
             <br />
             Fill out the form below to obtain a monthly summary of information around
             UX/UI!
+            <br />
+            Check <a href="/waitlist" class="underline">here</a> for use React Hook
+            Form and Sonner.
           </p>
         </div>
 
-        <form method="POST" class="flex flex-col items-start w-full gap-y-2">
-          <label for="email">Email</label>
-          <input
+        <form
+          method="POST"
+          class="flex flex-col items-start w-full gap-y-2"
+          transition:name="form-newsletter"
+          transition:animate="none"
+        >
+          <label
+            for="email"
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Email
+          </label>
+          <Input
             id="email"
-            class="w-full"
+            autoComplete="off"
+            placeholder="janedoe@example.com"
             {...newsletterForm.inputProps.email}
           />
-          {res?.fieldErrors?.email}
+          <p class="text-muted-foreground text-[13px]">
+            <i>Save in Astro DB. Demo emails only, not for use!</i>
+          </p>
+          <!-- {res?.fieldErrors?.email?.map((error) => <p class="text-[#ff6166] text-[13px]">{error}</p>)} -->
 
-          <button type="submit">submit</button>
-          {cookie ? <p>You are subscribed!</p> : null}
+          {
+            cookie || res?.fieldErrors?.email || error ? (
+              <div
+                class={cn(
+                  "flex items-center gap-x-2.5 border text-sm w-full p-3 rounded-lg overflow-hidden",
+                  error || res?.fieldErrors?.email
+                    ? "border-[#fdd8d8] dark:border-[#671e21] text-[#ff6166] bg-[#ff6166]/10"
+                    : null,
+                  cookie
+                    ? "border-[#cce6ff] dark:border-[#0d3868] text-[#52A8FF] bg-[#52A8FF]/10"
+                    : null
+                )}
+              >
+                <Icon name="lucide:info" class="size-5" />
+                <p>
+                  {cookie ? "You are subscribed!" : null}
+                  {error ? "Something wrong! Try again please." : null}
+                  {res?.fieldErrors?.email ? res?.fieldErrors?.email : null}
+                </p>
+              </div>
+            ) : null
+          }
+
+          <Button type="submit" className="mt-4 w-full">Submit</Button>
         </form>
       </div>
     </div>

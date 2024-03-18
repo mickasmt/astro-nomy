@@ -21,7 +21,7 @@ export const navMenuConfig: NavMenuConfig = {
           title: "Waitlist",
           href: "/waitlist",
           description:
-            "A waitlist form using Astro DB, React Hook Form & Sonner.",
+            "A waitlist form using Astro DB, React Hook Form & Sonner. Static page.",
           image: "/images/examples/waitlist.jpg",
           forceReload: true,
           launched: true,
@@ -41,8 +41,9 @@ export const navMenuConfig: NavMenuConfig = {
         {
           title: "Newsletter",
           href: "/newsletter",
-          description: "A newsletter form using Astro DB an Simple Stack Form",
-          // image: "/images/examples/waitlist.jpg",
+          description:
+            "A newsletter form using Astro DB & Simple Stack Form. Counter display!",
+          image: "/images/examples/newsletter.jpg",
           launched: true,
         },
       ],

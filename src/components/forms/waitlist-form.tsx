@@ -68,9 +68,11 @@ export function WaitlistForm() {
                 <Input placeholder="jonhdoe@example.com" {...field} />
               </FormControl>
               <FormDescription className="text-[13px]">
-                Unique email please. Errors with duplicates!
-                <br />
-                <i>Save in Astro DB. Demo emails only, not for use!</i>
+                <i>
+                  Unique email please. Errors with duplicates!
+                  <br />
+                  Save in Astro DB. Page not reload after submit!
+                </i>
               </FormDescription>
               <FormMessage />
             </FormItem>
