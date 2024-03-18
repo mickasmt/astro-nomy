@@ -1,0 +1,89 @@
+---
+export const prerender = false;
+
+import MainLayout from "@/layouts/main-layout.astro";
+import { Icon } from "astro-icon/components";
+import { WaitingList, db, sql } from "astro:db";
+import { createForm } from "simple:form";
+import z from "zod";
+
+const newsletterForm = createForm({
+  email: z.string().email(),
+});
+
+const res = await Astro.locals.form.getData(newsletterForm);
+
+if (res?.data) {
+  // add try catch
+  const response = await fetch(Astro.url.origin + "/api/waitlist", {
+    method: "POST",
+    headers: {
+      Accept: "application.json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(res.data),
+  });
+  const data = await response.json();
+
+  if (data.message === "success") {
+    Astro.cookies.set("sub-newsletter", "true");
+  }
+}
+
+// check method in url because we have POST before GET after submit form
+const method = Astro.request.method === "GET";
+const cookie = Astro.cookies.get("sub-newsletter")?.boolean();
+if (cookie && method) {
+  Astro.cookies.delete("sub-newsletter");
+}
+
+// Fetch count of all email in waitlist
+const waiting = await db
+  .select({ count: sql<number>`count(*)`.mapWith(Number) })
+  .from(WaitingList);
+const count = waiting[0].count;
+
+// With Fetch API:
+// const response = await fetch(Astro.url.origin + "/api/waitlist");
+// const { count } = await response.json();
+---
+
+<MainLayout
+  title="Newsletter"
+  description="A waiting list page with form using Astro DB."
+  mainClass="bg-background-200"
+>
+  <div class="relative flex w-full min-h-svh items-center justify-center">
+    <div
+      class="px-4 py-5 sm:p-6 bg-background border rounded-xl overflow-hidden -mt-36"
+    >
+      <div class="flex flex-col gap-y-5 w-full max-w-sm">
+        <div class="space-y-3">
+          <Icon name="stars-outline" class="size-10" />
+          <h1 class="text-2xl font-heading tracking-wide">
+            Subscribe to the newsletter
+          </h1>
+          <p class="text-sm text-muted-foreground">
+            <b>{count} people</b> already joined the newsletter!
+            <br />
+            Fill out the form below to obtain a monthly summary of information around
+            UX/UI!
+          </p>
+        </div>
+
+        <form method="POST" class="flex flex-col items-start w-full gap-y-2">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            class="w-full"
+            {...newsletterForm.inputProps.email}
+          />
+          {res?.fieldErrors?.email}
+
+          <button type="submit">submit</button>
+          {cookie ? <p>You are subscribed!</p> : null}
+        </form>
+      </div>
+    </div>
+  </div>
+</MainLayout>

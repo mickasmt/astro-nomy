@@ -5,7 +5,7 @@ import { navMenuConfig } from "@/config/nav-menu";
 import MainLayout from "@/layouts/main-layout.astro";
 
 const examples = navMenuConfig.examplesNav[0].items;
-const pages = navMenuConfig.infosNav[0].items?.concat(navMenuConfig.links);
+const pages = navMenuConfig.pagesNav[0].items;
 ---
 
 <MainLayout title="">
@@ -13,7 +13,7 @@ const pages = navMenuConfig.infosNav[0].items?.concat(navMenuConfig.links);
     <section class="container py-12">
       <PageHeader
         heading="Discovery"
-        text="Differents pages and examples apps built with Astro v4.5, shadcn/ui & react js. Open Source."
+        text="Differents pages and examples apps built with Astro v4.5, shadcn/ui & react js. Fully Open Source."
       />
 
       <ExampleGrid title="Pages" items={pages} />

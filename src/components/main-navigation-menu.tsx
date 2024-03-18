@@ -14,15 +14,16 @@ import { Badge } from "@/components/ui/badge";
 import { navMenuConfig } from "@/config/nav-menu";
 import type { MenuItem } from "@/types";
 
-const infos = navMenuConfig.infosNav[0];
+const links = navMenuConfig.links;
+const pages = navMenuConfig.pagesNav[0];
 const examples = navMenuConfig.examplesNav[0];
 
 export function MainNavigationMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>{infos.title}</NavigationMenuTrigger>
+        {/* <NavigationMenuItem>
+          <NavigationMenuTrigger>{pages.title}</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -41,8 +42,19 @@ export function MainNavigationMenu() {
                 </a>
               </li>
 
-              {infos.items?.map((info) => (
-                <ListItem key={info.title} {...info} />
+              {pages.items?.map((page) => (
+                <ListItem key={page.title} {...page} />
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem> */}
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>{pages.title}</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              {pages.items?.map((page) => (
+                <ListItem key={page.title} {...page} />
               ))}
             </ul>
           </NavigationMenuContent>
@@ -59,18 +71,20 @@ export function MainNavigationMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          {navMenuConfig.links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={navigationMenuTriggerStyle()}
-              {...(link.forceReload ? { "data-astro-reload": true } : {})}
-            >
-              {link.title}
-            </a>
-          ))}
-        </NavigationMenuItem>
+        {links ? (
+          <NavigationMenuItem>
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={navigationMenuTriggerStyle()}
+                {...(link.forceReload ? { "data-astro-reload": true } : {})}
+              >
+                {link.title}
+              </a>
+            ))}
+          </NavigationMenuItem>
+        ) : null}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -100,7 +114,7 @@ const ListItem: React.FC<MenuItem> = ({
             : ""
         )}
       >
-        <div className="text-sm font-medium leading-none">
+        <div className="flex items-center text-sm font-medium leading-none">
           <span className="mr-2">{title}</span>
           {disabled ? (
             <Badge
@@ -112,7 +126,10 @@ const ListItem: React.FC<MenuItem> = ({
             </Badge>
           ) : null}
           {launched ? (
-            <Badge radius="sm" className="h-5 px-1.5 text-xs font-medium">
+            <Badge
+              radius="sm"
+              className="h-5 px-1.5 text-xs font-medium bg-[#ebf5ff] hover:bg-[#ebf5ff] text-[#0068d6]"
+            >
               NEW
             </Badge>
           ) : null}

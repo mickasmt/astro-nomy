@@ -1,7 +1,7 @@
 import type { NavMenuConfig } from "@/types";
 
 export const navMenuConfig: NavMenuConfig = {
-  infosNav: [
+  pagesNav: [
     {
       title: "Pages",
       items: [
@@ -21,9 +21,29 @@ export const navMenuConfig: NavMenuConfig = {
           title: "Waitlist",
           href: "/waitlist",
           description:
-            "A waiting list page with form using Astro DB, React Hook Form & Sonner.",
+            "A waitlist form using Astro DB, React Hook Form & Sonner.",
           image: "/images/examples/waitlist.jpg",
           forceReload: true,
+          launched: true,
+        },
+        {
+          title: "Pricing",
+          href: "/pricing",
+          description: "Pricing cards, FAQs and more content with price.",
+          image: "/images/examples/pricing.jpg",
+        },
+        {
+          title: "About",
+          href: "/about",
+          description: "A simple page with a masonry gallery and little text.",
+          image: "/images/examples/about.jpg",
+        },
+        {
+          title: "Newsletter",
+          href: "/newsletter",
+          description: "A newsletter form using Astro DB an Simple Stack Form",
+          // image: "/images/examples/waitlist.jpg",
+          launched: true,
         },
       ],
     },
@@ -78,17 +98,11 @@ export const navMenuConfig: NavMenuConfig = {
     },
   ],
   links: [
-    {
-      title: "Pricing",
-      href: "/pricing",
-      description: "Pricing cards, FAQs and more.",
-      image: "/images/examples/pricing.jpg",
-    },
-    {
-      title: "About",
-      href: "/about",
-      description: "Simple page",
-      image: "/images/examples/about.jpg",
-    },
+    // {
+    //   title: "Example",
+    //   href: "/example",
+    //   description: "Example description",
+    //   image: "/images/examples/image.jpg",
+    // },
   ],
 };
