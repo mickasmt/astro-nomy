@@ -69,9 +69,7 @@ export function WaitlistForm() {
               </FormControl>
               <FormDescription className="text-[13px]">
                 <i>
-                  Unique email please. Errors with duplicates!
-                  <br />
-                  Save in Astro DB. Page not reload after submit!
+                  Save in Astro DB. Static page with react form!
                 </i>
               </FormDescription>
               <FormMessage />

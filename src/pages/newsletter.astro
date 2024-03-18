@@ -35,10 +35,8 @@ if (res?.data) {
   }
 }
 
-// check method in url because we have POST before GET after submit form
-const method = Astro.request.method === "GET";
 const cookie = Astro.cookies.get("sub-newsletter")?.boolean();
-if (cookie && method) {
+if (cookie) {
   Astro.cookies.delete("sub-newsletter");
 }
 
@@ -47,8 +45,6 @@ const waiting = await db
   .select({ count: sql<number>`count(*)`.mapWith(Number) })
   .from(WaitingList);
 const count = waiting[0].count;
-
-console.log(newsletterForm.inputProps.email);
 
 // With Fetch API:
 // const response = await fetch(Astro.url.origin + "/api/waitlist");
@@ -100,7 +96,7 @@ console.log(newsletterForm.inputProps.email);
             {...newsletterForm.inputProps.email}
           />
           <p class="text-muted-foreground text-[13px]">
-            <i>Save in Astro DB. Demo emails only, not for use!</i>
+            <i>Unique email please. Errors with duplicates!</i>
           </p>
           <!-- {res?.fieldErrors?.email?.map((error) => <p class="text-[#ff6166] text-[13px]">{error}</p>)} -->
 
