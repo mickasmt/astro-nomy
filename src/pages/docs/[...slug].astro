@@ -8,6 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { docsConfig } from "@/config/docs";
 import DocsLayout from "@/layouts/docs-layout.astro";
 import { getTableOfContents } from "@/lib/toc";
+import { Icon } from "astro-icon/components";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -50,6 +51,12 @@ if (!slug || !doc) {
         class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
         <div class="mx-auto w-full min-w-0">
+          <div class="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
+            <div class="truncate">Docs</div>
+            <Icon name="lucide:chevron-right" class="size-4" />
+            <div class="font-medium text-foreground">{doc.data.title}</div>
+          </div>
+
           <DocsPageHeader
             heading={doc.data.title}
             text={doc.data.description}
