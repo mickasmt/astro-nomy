@@ -24,7 +24,6 @@ export const navMenuConfig: NavMenuConfig = {
             "A waitlist form using Astro DB, React Hook Form & Sonner. Static page.",
           image: "/images/examples/waitlist.jpg",
           forceReload: true,
-          launched: true,
         },
         {
           title: "Pricing",
@@ -44,7 +43,6 @@ export const navMenuConfig: NavMenuConfig = {
           description:
             "A newsletter form using Astro DB & Simple Stack Form. Counter display!",
           image: "/images/examples/newsletter.jpg",
-          launched: true,
         },
       ],
     },
@@ -67,6 +65,14 @@ export const navMenuConfig: NavMenuConfig = {
           image: "/images/examples/documentation.jpg",
         },
         {
+          title: "Anime List",
+          href: "/animes",
+          description:
+            "Fetch anime content from an graphql endpoint. Tabs component.",
+          image: "/images/examples/animes.jpg",
+          launched: true,
+        },
+        {
           title: "Blog DB",
           href: "/blog-db",
           description:
@@ -80,13 +86,6 @@ export const navMenuConfig: NavMenuConfig = {
           disabled: true,
           description: "Ecommerce pages fetching data from an API.",
           // image: "/images/examples/ecommerce.jpg",
-        },
-        {
-          title: "Anime List",
-          href: "/animes",
-          description: "Fetch anime content from an graphql endpoint",
-          // image: "/images/examples/animes.jpg",
-          disabled: true,
         },
         {
           title: "Authentification",

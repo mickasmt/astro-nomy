@@ -1,7 +1,20 @@
-type IconProps = React.HTMLAttributes<SVGElement>;
+import {
+  Calendar,
+  Clock,
+  Flame,
+  Tv2,
+  type LucideIcon,
+  type LucideProps,
+} from "lucide-react";
+
+export type Icon = LucideIcon;
 
 export const Icons = {
-  logo: (props: IconProps) => (
+  flame: Flame,
+  calendar: Calendar,
+  tv: Tv2,
+  clock: Clock,
+  logo: ({ ...props }: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
@@ -17,7 +30,7 @@ export const Icons = {
       />
     </svg>
   ),
-  hamburger: (props: IconProps) => (
+  hamburger: ({ ...props }: LucideProps) => (
     <svg
       stroke="currentColor"
       fill="currentColor"
@@ -39,7 +52,7 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  wrenchSrewdriver: (props: IconProps) => (
+  wrenchSrewdriver: ({ ...props }: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
