@@ -41,11 +41,7 @@ export function WaitlistForm() {
 
     if (data.message === "success") {
       toast.success("Thanks for your support!", {
-        description: (
-          <span>
-            We're added <b>{values.email}</b> to the waitlist!
-          </span>
-        ),
+        description: "We're added your email to the waitlist!",
       });
       form.reset();
     } else {
