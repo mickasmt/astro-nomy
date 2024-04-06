@@ -52,10 +52,10 @@ This project as an experiment to see how a modern app (with features like authen
 - 100/100 Lighthouse performance
 - Minimal styling (make it your own!)
 - RSS Feed support
+- Sitemap support
 
 _Not implemented yet :_
 
-- Sitemap support
 - Data Fetching
 - SEO component
 - API Endpoint
@@ -69,14 +69,14 @@ _Not implemented yet :_
 - [x] ~Build **changelog pages**~
 - [x] ~Build **waitlist with React Hook Form**~
 - [x] ~Build **newsletter with Simple Form**~
+- [x] ~Build **animes pages** (graphql)~
 - [ ] Build **blog with Astro DB** (work on it)
 - [ ] Build **ecommerce pages** (work on it)
 - [ ] Build **dashboard pages**
-- [ ] Build **animes pages** (graphql)
 - [ ] Add search support for blog
 - [ ] Add OG image for blog and others
 - [ ] Add SEO component & metadata
-- [ ] Subscriptions using Stripe
+- [ ] Subscriptions using Stripe (or Lemon Squeezy?)
 
 ## Running Locally
 
