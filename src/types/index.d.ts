@@ -1,5 +1,3 @@
-// import { User } from "@prisma/client"
-
 export type NavItem = {
   title: string;
   href: string;
@@ -90,3 +88,16 @@ type CoverImage = {
   extraLarge: string;
   large: string;
 };
+
+export type InfoList = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export type InfoLdg = {
+  title: string;
+  image: string;
+  description: string;
+  list: InfoList[];
+}

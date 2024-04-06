@@ -1,5 +1,7 @@
 ---
-import { siteConfig } from "@/config/site";
+import { NewsletterForm } from "@/components/forms/newsletter-form";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { footerLinks, siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
 
@@ -10,18 +12,43 @@ type Props = {
 const { className } = Astro.props;
 ---
 
-<footer class={cn(className, "border-t")}>
+<footer class={cn("border-t", className)}>
   <div
-    class="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0"
+    class="container grid grid-cols-1 gap-6 py-14 sm:grid-cols-2 md:grid-cols-5"
   >
-    <div
-      class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0"
-    >
-      <a href="/" aria-label="Astronomy homepage">
-        <Icon name="stars-outline" class="size-8" />
-      </a>
+    {
+      footerLinks.map((section) => (
+        <div>
+          <span class="text-sm font-medium text-foreground">
+            {section.title}
+          </span>
+          <ul class="mt-4 list-inside space-y-3">
+            {section.items?.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-muted-foreground hover:text-primary"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+    <div class="flex flex-col items-end md:col-span-2">
+      Form Newsletter coming soon!
+      <!-- <NewsletterForm client:only="react" /> -->
+    </div>
+  </div>
 
-      <p class="text-center text-sm leading-loose md:text-left balance-text">
+  <div class="border-t py-4">
+    <div class="container flex items-center justify-between">
+      <!-- <span class="text-muted-foreground text-sm">
+        Copyright &copy; 2024. All rights reserved.
+      </span> -->
+      <p class="text-left text-sm text-muted-foreground">
         Built by{" "}
         <a
           href={siteConfig.links.twitter}
@@ -31,15 +58,6 @@ const { className } = Astro.props;
         >
           mickasmt
         </a>
-        . Based on{" "}
-        <a
-          href="https://github.com/shadcn-ui/taxonomy"
-          target="_blank"
-          rel="noreferrer"
-          class="font-medium underline underline-offset-4"
-        >
-          shadcn-ui/taxonomy
-        </a>
         . Hosted on{" "}
         <a
           href="https://vercel.com"
@@ -48,18 +66,20 @@ const { className } = Astro.props;
           class="font-medium underline underline-offset-4"
         >
           Vercel
-        </a>
-        . The source code is available on{" "}
+        </a>.
+      </p>
+
+      <div class="flex items-center gap-3">
         <a
           href={siteConfig.links.github}
           target="_blank"
           rel="noreferrer"
           class="font-medium underline underline-offset-4"
         >
-          GitHub
+          <Icon name="github" class="size-5" />
         </a>
-        .
-      </p>
+        <ThemeToggle client:load />
+      </div>
     </div>
   </div>
 </footer>

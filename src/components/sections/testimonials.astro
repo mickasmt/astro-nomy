@@ -1,0 +1,48 @@
+---
+import { testimonials } from "@/config/landing";
+import { Image } from "astro:assets";
+import HeaderSection from "./header-section.astro";
+---
+
+<section>
+  <div class="container flex max-w-7xl flex-col gap-10 py-32 sm:gap-y-16">
+    <HeaderSection
+      label="Testimonials"
+      title="What our clients are sharing."
+      subtitle="Discover the glowing feedback from our delighted customers worldwide."
+    />
+
+    <div class="column-1 gap-5 space-y-5 md:columns-2 lg:columns-3 xl:columns-4">
+      {
+        testimonials.map((item) => (
+          <div class="break-inside-avoid">
+            <div class="relative rounded-xl border bg-muted/25">
+              <div class="flex flex-col px-4 py-5 sm:p-6">
+                <div>
+                  <div class="relative mb-4 flex items-center gap-3">
+                    <span class="relative inline-flex size-10 shrink-0 items-center justify-center rounded-full text-base">
+                      <Image
+                        width={100}
+                        height={100}
+                        class="size-full rounded-full border"
+                        src={item.image}
+                        alt={item.name}
+                      />
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-foreground">
+                        {item.name}
+                      </p>
+                      <p class="text-sm text-muted-foreground">{item.job}</p>
+                    </div>
+                  </div>
+                  <q class="text-muted-foreground">{item.review}</q>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

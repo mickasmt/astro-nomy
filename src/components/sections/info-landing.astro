@@ -1,0 +1,67 @@
+---
+import { cn } from "@/lib/utils";
+import type { InfoLdg } from "@/types";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+interface Props {
+  reverse?: boolean;
+  data: InfoLdg;
+}
+
+const { reverse, data } = Astro.props;
+---
+
+<div class="py-16 sm:py-20">
+  <div
+    class="mx-auto grid max-w-7xl gap-10 px-4 sm:gap-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8"
+  >
+    <div class={cn(reverse ? "lg:order-2" : "lg:order-1")}>
+      <h2
+        class="font-heading text-3xl text-foreground md:text-4xl lg:text-[40px]"
+      >
+        {data.title}
+      </h2>
+      <p class="mt-6 text-lg text-muted-foreground">
+        {data.description}
+      </p>
+      <dl class="mt-6 space-y-4 leading-7">
+        {
+          data.list.map((item) => {
+            return (
+              <div class="relative pl-8">
+                <dt class="font-semibold">
+                  <Icon
+                    name={item.icon}
+                    class="absolute left-0 top-1 size-5 stroke-purple-700"
+                  />
+                  <span>{item.title}</span>
+                </dt>
+                <dd class="text-sm text-muted-foreground">
+                  {item.description}
+                </dd>
+              </div>
+            );
+          })
+        }
+      </dl>
+    </div>
+    <div
+      class={cn(
+        "rounded-xl overflow-hidden border lg:-m-4",
+        reverse ? "order-1" : "order-2"
+      )}
+    >
+      <div class="relative aspect-video">
+        <Image
+          class="size-full object-cover object-center"
+          src={data.image}
+          alt={data.title}
+          width={1000}
+          height={500}
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</div>

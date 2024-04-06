@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div class="pb-6 sm:pb-16">
+  <div class="container max-w-7xl">
+    <div
+      class="rounded-xl md:bg-muted/30 md:p-3 md:ring-1 md:ring-inset md:ring-border"
+    >
+      <div
+        class="relative aspect-video overflow-hidden rounded-xl md:rounded-lg md:border"
+      >
+        <Image
+          class="size-full object-cover object-center"
+          src="/images/examples/static-blog.jpg"
+          alt="preview landing"
+          width={2000}
+          height={1000}
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</div>
