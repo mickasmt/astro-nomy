@@ -53,12 +53,12 @@ This project as an experiment to see how a modern app (with features like authen
 - Minimal styling (make it your own!)
 - RSS Feed support
 - Sitemap support
+- Data Fetching
+- API Endpoint
 
 _Not implemented yet :_
 
-- Data Fetching
 - SEO component
-- API Endpoint
 - Subscriptions using **Lemon Squeezy** ?
 
 ## Roadmap
@@ -72,7 +72,7 @@ _Not implemented yet :_
 - [x] ~Build **animes pages** (graphql)~
 - [ ] Build **blog with Astro DB** (work on it)
 - [ ] Build **ecommerce pages** (work on it)
-- [ ] Build **dashboard pages**
+- [ ] Build **auth/dashboard pages**
 - [ ] Add search support for blog
 - [ ] Add OG image for blog and others
 - [ ] Add SEO component & metadata
